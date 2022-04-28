@@ -1,3 +1,3 @@
 # Grupp5 test
 
-Ändrat i readme
+Nu har jag skapat klasser
