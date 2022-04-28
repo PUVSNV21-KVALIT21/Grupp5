@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Egna\\hakimlivs\\hakimlivs\\hakimlivs.csproj",
+  "FilePath": "c:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Skola-Mjukvara\\Grupp5\\hakimlivs\\hakimlivs.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "6.0",
@@ -16298,47 +16298,47 @@
   "RootNamespace": "hakimlivs",
   "Documents": [
     {
-      "FilePath": "c:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Egna\\hakimlivs\\hakimlivs\\Pages\\Privacy.cshtml",
-      "TargetPath": "Pages\\Privacy.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Egna\\hakimlivs\\hakimlivs\\Pages\\_ViewImports.cshtml",
-      "TargetPath": "Pages\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Egna\\hakimlivs\\hakimlivs\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Pages\\Shared\\_ValidationScriptsPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Egna\\hakimlivs\\hakimlivs\\Pages\\_ViewStart.cshtml",
+      "FilePath": "c:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Skola-Mjukvara\\Grupp5\\hakimlivs\\Pages\\_ViewStart.cshtml",
       "TargetPath": "Pages\\_ViewStart.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Egna\\hakimlivs\\hakimlivs\\Pages\\Shared\\_LoginPartial.cshtml",
-      "TargetPath": "Pages\\Shared\\_LoginPartial.cshtml",
+      "FilePath": "c:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Skola-Mjukvara\\Grupp5\\hakimlivs\\Pages\\_ViewImports.cshtml",
+      "TargetPath": "Pages\\_ViewImports.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Egna\\hakimlivs\\hakimlivs\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
-      "TargetPath": "Areas\\Identity\\Pages\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Egna\\hakimlivs\\hakimlivs\\Pages\\Index.cshtml",
+      "FilePath": "c:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Skola-Mjukvara\\Grupp5\\hakimlivs\\Pages\\Index.cshtml",
       "TargetPath": "Pages\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Egna\\hakimlivs\\hakimlivs\\Pages\\Shared\\_Layout.cshtml",
+      "FilePath": "c:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Skola-Mjukvara\\Grupp5\\hakimlivs\\Pages\\Shared\\_Layout.cshtml",
       "TargetPath": "Pages\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Egna\\hakimlivs\\hakimlivs\\Pages\\Error.cshtml",
+      "FilePath": "c:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Skola-Mjukvara\\Grupp5\\hakimlivs\\Pages\\Privacy.cshtml",
+      "TargetPath": "Pages\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Skola-Mjukvara\\Grupp5\\hakimlivs\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Pages\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Skola-Mjukvara\\Grupp5\\hakimlivs\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Skola-Mjukvara\\Grupp5\\hakimlivs\\Pages\\Shared\\_LoginPartial.cshtml",
+      "TargetPath": "Pages\\Shared\\_LoginPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Skola-Mjukvara\\Grupp5\\hakimlivs\\Pages\\Error.cshtml",
       "TargetPath": "Pages\\Error.cshtml",
       "FileKind": "mvc"
     }
