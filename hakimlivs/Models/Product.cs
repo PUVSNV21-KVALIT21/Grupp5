@@ -2,20 +2,15 @@
 
 namespace hakimlivs.Models
 {
-    public class Products
+    public class Product
     {
-        public enum Categories
-        {
-            Frukt,
-            Soppa,
-            Dricka,
-            Godis
-        }
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
         public int Price { get; set; }
+        [Required]
+        public string Category { get; set; }
         [Required]
         public string Info { get; set; }
         [Required]

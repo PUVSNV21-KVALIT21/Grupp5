@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace hakimlivs.Models
 {
-    public class Users : IdentityUser
+    public class User : IdentityUser
     {
         public int Id { get; set; }
         [Required]
@@ -28,5 +28,6 @@ namespace hakimlivs.Models
         [Required]
 
         public bool IsAdmin { get; set; } = false;
+        public List<Order> Orders { get; set; }
     }
 }
