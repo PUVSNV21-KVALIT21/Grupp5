@@ -8,45 +8,45 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = hakimlivs
 build_property.RootNamespace = hakimlivs
-build_property.ProjectDir = C:\Users\Leotrim Jusufi\Documents\Skola\Egna\Grupp5\hakimlivs\
+build_property.ProjectDir = C:\Users\jonas\Desktop\Teknikhögskolan\Termin3\Producera och leverera mjukvara\repository\hakimlivs\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Leotrim Jusufi\Documents\Skola\Egna\Grupp5\hakimlivs
+build_property.MSBuildProjectDirectory = C:\Users\jonas\Desktop\Teknikhögskolan\Termin3\Producera och leverera mjukvara\repository\hakimlivs
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Leotrim Jusufi/Documents/Skola/Egna/Grupp5/hakimlivs/Areas/Identity/Pages/_ViewStart.cshtml]
+[C:/Users/jonas/Desktop/Teknikhögskolan/Termin3/Producera och leverera mjukvara/repository/hakimlivs/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Leotrim Jusufi/Documents/Skola/Egna/Grupp5/hakimlivs/Pages/Error.cshtml]
+[C:/Users/jonas/Desktop/Teknikhögskolan/Termin3/Producera och leverera mjukvara/repository/hakimlivs/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Leotrim Jusufi/Documents/Skola/Egna/Grupp5/hakimlivs/Pages/Index.cshtml]
+[C:/Users/jonas/Desktop/Teknikhögskolan/Termin3/Producera och leverera mjukvara/repository/hakimlivs/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Leotrim Jusufi/Documents/Skola/Egna/Grupp5/hakimlivs/Pages/Privacy.cshtml]
+[C:/Users/jonas/Desktop/Teknikhögskolan/Termin3/Producera och leverera mjukvara/repository/hakimlivs/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Leotrim Jusufi/Documents/Skola/Egna/Grupp5/hakimlivs/Pages/Shared/_LoginPartial.cshtml]
+[C:/Users/jonas/Desktop/Teknikhögskolan/Termin3/Producera och leverera mjukvara/repository/hakimlivs/Pages/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Leotrim Jusufi/Documents/Skola/Egna/Grupp5/hakimlivs/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/jonas/Desktop/Teknikhögskolan/Termin3/Producera och leverera mjukvara/repository/hakimlivs/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Leotrim Jusufi/Documents/Skola/Egna/Grupp5/hakimlivs/Pages/_ViewImports.cshtml]
+[C:/Users/jonas/Desktop/Teknikhögskolan/Termin3/Producera och leverera mjukvara/repository/hakimlivs/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Leotrim Jusufi/Documents/Skola/Egna/Grupp5/hakimlivs/Pages/_ViewStart.cshtml]
+[C:/Users/jonas/Desktop/Teknikhögskolan/Termin3/Producera och leverera mjukvara/repository/hakimlivs/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Leotrim Jusufi/Documents/Skola/Egna/Grupp5/hakimlivs/Pages/Shared/_Layout.cshtml]
+[C:/Users/jonas/Desktop/Teknikhögskolan/Termin3/Producera och leverera mjukvara/repository/hakimlivs/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-cbh6ur1kkz
