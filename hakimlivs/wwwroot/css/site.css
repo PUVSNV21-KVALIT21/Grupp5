@@ -38,12 +38,6 @@ div .main-page {
     text-align: center;
 }
 
-div .product-header {
-    background-color: aqua;
-    text-align: left;
-    padding: 10px;
-}
-
 div .offer-items {
     display: flex;
     flex-wrap: wrap;
@@ -56,6 +50,12 @@ div .offer-item {
     margin: 10px;
     background-color: antiquewhite;
     flex-grow: 1;
+}
+
+div .product-header {
+    background-color: aqua;
+    text-align: left;
+    padding: 10px;
 }
 
 div .products {
