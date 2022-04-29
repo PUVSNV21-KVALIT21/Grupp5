@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Egna\\Grupp5\\hakimlivs\\hakimlivs.csproj": {}
+    "C:\\Users\\jonas\\Desktop\\Teknikhögskolan\\Termin3\\Producera och leverera mjukvara\\repository\\hakimlivs\\hakimlivs.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Egna\\Grupp5\\hakimlivs\\hakimlivs.csproj": {
+    "C:\\Users\\jonas\\Desktop\\Teknikhögskolan\\Termin3\\Producera och leverera mjukvara\\repository\\hakimlivs\\hakimlivs.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Egna\\Grupp5\\hakimlivs\\hakimlivs.csproj",
+        "projectUniqueName": "C:\\Users\\jonas\\Desktop\\Teknikhögskolan\\Termin3\\Producera och leverera mjukvara\\repository\\hakimlivs\\hakimlivs.csproj",
         "projectName": "hakimlivs",
-        "projectPath": "C:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Egna\\Grupp5\\hakimlivs\\hakimlivs.csproj",
-        "packagesPath": "C:\\Users\\Leotrim Jusufi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Egna\\Grupp5\\hakimlivs\\obj\\",
+        "projectPath": "C:\\Users\\jonas\\Desktop\\Teknikhögskolan\\Termin3\\Producera och leverera mjukvara\\repository\\hakimlivs\\hakimlivs.csproj",
+        "packagesPath": "C:\\Users\\jonas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jonas\\Desktop\\Teknikhögskolan\\Termin3\\Producera och leverera mjukvara\\repository\\hakimlivs\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Leotrim Jusufi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jonas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
