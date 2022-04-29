@@ -1,6 +1,7 @@
 .vs/
-bin/
-obj/
-*.csproj.user
-Migrations/
+hakimlivs/bin/
+hakimlivs/obj/
+hakimlivs/*.csproj.user
+hakimlivs/Data/Migrations/
+hakimlivs/.vscode/
 .vscode/
