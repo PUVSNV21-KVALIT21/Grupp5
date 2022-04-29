@@ -17,13 +17,5 @@ namespace hakimlivs.Data
         public DbSet<OrderDetails> OrderDetails { get; set; }
         public DbSet<User> Users { get; set; }
 
-        //protected override void OnModelCreating(ModelBuilder model)
-        //{
-        //    // Merge Office and Address into one table.
-        //    model.Entity<IdentityUser>()
-        //        .Ignore()
-        //}
-
-
     }
 }
