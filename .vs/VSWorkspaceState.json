@@ -1,15 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-<<<<<<< HEAD
     "\\hakimlivs",
-    "\\hakimlivs\\Models"
+    "\\hakimlivs\\Models",
+    "\\hakimlivs\\wwwroot",
+    "\\hakimlivs\\wwwroot\\css"
   ],
-  "SelectedNode": "\\hakimlivs\\Models\\Products.cs",
-=======
-    "\\hakimlivs"
-  ],
-  "SelectedNode": "\\.dockerignore",
->>>>>>> 778a6c6a7820859981f9e658e89c5f1884bf19b3
+  "SelectedNode": "\\hakimlivs\\wwwroot\\css\\site.css",
   "PreviewInSolutionExplorer": false
 }
