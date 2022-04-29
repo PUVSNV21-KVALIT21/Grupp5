@@ -2620,19 +2620,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jörgen\\.nuget\\packages\\": {}
+    "C:\\Users\\Leotrim Jusufi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jörgen\\source\\repos\\hakimslivs\\hakimlivs\\hakimlivs.csproj",
+      "projectUniqueName": "C:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Egna\\Grupp5\\hakimlivs\\hakimlivs.csproj",
       "projectName": "hakimlivs",
-      "projectPath": "C:\\Users\\Jörgen\\source\\repos\\hakimslivs\\hakimlivs\\hakimlivs.csproj",
-      "packagesPath": "C:\\Users\\Jörgen\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jörgen\\source\\repos\\hakimslivs\\hakimlivs\\obj\\",
+      "projectPath": "C:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Egna\\Grupp5\\hakimlivs\\hakimlivs.csproj",
+      "packagesPath": "C:\\Users\\Leotrim Jusufi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Leotrim Jusufi\\Documents\\Skola\\Egna\\Grupp5\\hakimlivs\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Jörgen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Leotrim Jusufi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
