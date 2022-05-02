@@ -1,21 +1,17 @@
 ﻿@page
-@model IndexModel
+@model Products.IndexModel
+
 @{
     ViewData["Title"] = "Hakim Livs";
 }
 
 <div class="main-container">
 
-    <div class="main-menu">
-        <label>Menyval</label>
-        <label>Menyval</label>
-        <label>Menyval</label>
-        <label>Menyval</label>
-    </div>
+    
 
     <div class="main-page">
         
-        <div class="offer-items">
+        @*<div class="offer-items">
             <div class="offer-item">
                 <h1>Det här är ett erbjudande!</h1>
             </div>
@@ -25,18 +21,27 @@
             <div class="offer-item">
                 <h1>Det här är ett erbjudande!</h1>
             </div>
-        </div>
+        </div>*@
 
         <div class="product-header">
             Products
         </div>
 
         <div class="products">
-            <div class="product-item">
-                <h1>
-                    Det här är en produkt!
-                </h1>
-            </div>
+            @foreach (var item in Model.Product)
+            {
+                <div class="product-item">
+                    <p>
+                        @item.Name
+                    </p>
+                    <p>
+                        @item.Price
+                    </p>
+                    <p>
+                        @item.Info
+                    </p>
+                </div>
+            }
         </div>
     </div>
 
