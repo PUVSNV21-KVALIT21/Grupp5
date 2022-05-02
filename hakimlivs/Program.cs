@@ -1,10 +1,26 @@
 using hakimlivs.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.Configure<RequestLocalizationOptions>(opt =>
+{
+    CultureInfo[] cultures = {
+                new CultureInfo("sv-SE"),
+                new CultureInfo("en-GB"),
+                };
+
+    cultures[0].NumberFormat = cultures[1].NumberFormat;
+
+    opt.DefaultRequestCulture = new RequestCulture(cultures[0]);
+    opt.SupportedCultures = cultures;
+    opt.SupportedUICultures = cultures;
+});
+
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));

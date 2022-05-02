@@ -3,19 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using hakimlivs.Data;
 
 #nullable disable
 
-namespace hakimlivs.Data.Migrations
+namespace hakimlivs.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220429084223_RevertId")]
-    partial class RevertId
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,36 +22,7 @@ namespace hakimlivs.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("hakimlivs.Models.OrderDetails", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OrdersId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrdersId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("OrderDetails");
-                });
-
-            modelBuilder.Entity("hakimlivs.Models.Orders", b =>
+            modelBuilder.Entity("hakimlivs.Models.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -75,7 +44,33 @@ namespace hakimlivs.Data.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("hakimlivs.Models.Products", b =>
+            modelBuilder.Entity("hakimlivs.Models.OrderDetails", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("OrderDetails");
+                });
+
+            modelBuilder.Entity("hakimlivs.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -99,8 +94,8 @@ namespace hakimlivs.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Price")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -315,7 +310,7 @@ namespace hakimlivs.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("hakimlivs.Models.Users", b =>
+            modelBuilder.Entity("hakimlivs.Models.User", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
@@ -346,37 +341,37 @@ namespace hakimlivs.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasDiscriminator().HasValue("Users");
+                    b.HasDiscriminator().HasValue("User");
                 });
 
-            modelBuilder.Entity("hakimlivs.Models.OrderDetails", b =>
+            modelBuilder.Entity("hakimlivs.Models.Order", b =>
                 {
-                    b.HasOne("hakimlivs.Models.Orders", "Orders")
-                        .WithMany()
-                        .HasForeignKey("OrdersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("hakimlivs.Models.Products", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Orders");
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("hakimlivs.Models.Orders", b =>
-                {
-                    b.HasOne("hakimlivs.Models.Users", "User")
+                    b.HasOne("hakimlivs.Models.User", "User")
                         .WithMany("Orders")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("hakimlivs.Models.OrderDetails", b =>
+                {
+                    b.HasOne("hakimlivs.Models.Order", "Order")
+                        .WithMany()
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("hakimlivs.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -430,7 +425,7 @@ namespace hakimlivs.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("hakimlivs.Models.Users", b =>
+            modelBuilder.Entity("hakimlivs.Models.User", b =>
                 {
                     b.Navigation("Orders");
                 });

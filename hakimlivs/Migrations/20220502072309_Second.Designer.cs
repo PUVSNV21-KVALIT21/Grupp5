@@ -9,11 +9,11 @@ using hakimlivs.Data;
 
 #nullable disable
 
-namespace hakimlivs.Data.Migrations
+namespace hakimlivs.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220429084629_ChangedClassNaming")]
-    partial class ChangedClassNaming
+    [Migration("20220502072309_Second")]
+    partial class Second
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -96,8 +96,8 @@ namespace hakimlivs.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Price")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 

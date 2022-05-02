@@ -2,9 +2,9 @@
 
 #nullable disable
 
-namespace hakimlivs.Data.Migrations
+namespace hakimlivs.Migrations
 {
-    public partial class ChangedId : Migration
+    public partial class Second : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
