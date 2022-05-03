@@ -53,3 +53,7 @@ jobs:
      needs: build
      if: github.ref == 'refs/heads/#test'
      runs-on: ubuntu-latest
+     
+     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
