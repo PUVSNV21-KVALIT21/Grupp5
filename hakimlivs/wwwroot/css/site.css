@@ -17,59 +17,102 @@ a {
 
 header {
     width: 100%;
-    padding: 20px;
+    padding: 40px;
     text-align: center;
-    background-color: burlywood;
-}
-
-div .main-container {
     display: flex;
     flex-direction: row;
+    border-bottom: 1px solid #e8e8e8;
+    box-shadow: #e8e8e8 2px 2px 8px;
 }
 
-div .main-menu {
-    width: 400px;
-    background-color: steelblue;
+.hakim-title {
+    font-size: 30px;
+    color: red;
+    text-transform: uppercase;
 }
 
-div .main-page {
-    width: 100%;
-    background-color: brown;
-    text-align: center;
-}
-
-div .offer-items {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-}
-
-div .offer-item {
-    height: 300px;
-    padding: 10px;
-    margin: 10px;
-    background-color: antiquewhite;
+.searchbox {
     flex-grow: 1;
-}
-
-div .product-header {
-    background-color: aqua;
-    text-align: left;
     padding: 10px;
+    border-style: solid;
+    border-color: dimgrey;
+    border-radius: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
-div .products {
+.login {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.cart {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 120px;
+    padding: 10px;
+    border-style: solid;
+    border-color: dimgrey;
+}
+
+.cart-button {
+    padding-left: 10px;
+    padding-right: 10px;
+    border-style: none;
+    background-color: cadetblue;
+    color: white;
+}
+
+.main-menu {
+    text-align: center;
+    background-color: antiquewhite;
+}
+
+.menu-button {
+    padding: 20px;
+    width: 150px;
+    border-style: none;
+}
+
+.menu-button:hover {
+    background-color: cadetblue;
+}
+
+.main-container {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row;
 }
 
-div .product-item {
+.content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.product-item {
     width: 200px;
     height: 250px;
     padding: 10px;
     margin: 10px;
     background-color: aquamarine;
+    flex:auto;
+}
+
+.description {
+    height: 80px;
+    overflow: hidden;
+}
+
+p.name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.img {
+    margin: 5px;
+    width: 100%;
+    height: 60px;
 }
 
 ul {
@@ -78,8 +121,3 @@ ul {
 li {
     list-style: none;
 }
-
-    li .offer-list-item {
-        width: 50px;
-        height: 50px;
-    }

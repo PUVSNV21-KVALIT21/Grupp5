@@ -8,31 +8,45 @@
 </head>
 <body>
     <header>
-        <a class="navbar-brand" asp-area="" asp-page="/Index">hakimlivs</a>
-        <input type="search" placeholder="sök efter någe"/>
-        <select class="login">
-            <option>
+        <a class="hakim-title" asp-area="" asp-page="/Index">hakimlivs</a>
+        <input class="searchbox" type="search" placeholder="sök efter någe"/>
+        <div class="login">
                 <partial name="_LoginPartial" />
-            </option>
-        </select>
-        <select class="cart">
+        </div>
+        <select class="cart" cite="varukorg">
 
         </select>
-        <button>
+        <button class="cart-button">
             Till kassan
         </button>
     </header>
 
-    <div class="main-menu">
-        <label>Menyval</label>
-        <label>Menyval</label>
-        <label>Menyval</label>
-        <label>Menyval</label>
-    </div>
-
-    <main role="main">
+    <div class="main-container">
+    
+        <section class="main-menu">
+            <div class="menu-button">
+                <a asp-page="Products/Index">Frukt</a>
+            </div>
+            <div class="menu-button">
+                <a href="#">Läsk</a>
+            </div>
+            <div class="menu-button">
+                <a href="#">Kött</a>
+            </div>
+            <div class="menu-button">
+                <a href="#">Fisk</a>
+            </div>
+            <div class="menu-button">
+                <a href="#">Bacon</a>
+            </div>
+        </section>
+    
+        <main class="content">
             @RenderBody()
-    </main>
+        </main>
+    
+    </div>
+        
 
     <footer>
         <div class="container">

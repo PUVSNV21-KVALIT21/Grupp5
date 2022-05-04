@@ -4,45 +4,23 @@
 @{
     ViewData["Title"] = "Hakim Livs";
 }
-
-<div class="main-container">
-
     
-
-    <div class="main-page">
-        
-        @*<div class="offer-items">
-            <div class="offer-item">
-                <h1>Det här är ett erbjudande!</h1>
-            </div>
-            <div class="offer-item">
-                <h1>Det här är ett erbjudande!</h1>
-            </div>
-            <div class="offer-item">
-                <h1>Det här är ett erbjudande!</h1>
-            </div>
-        </div>*@
-
-        <div class="product-header">
-            Products
-        </div>
-
-        <div class="products">
-            @foreach (var item in Model.Product)
-            {
-                <div class="product-item">
-                    <p>
-                        @item.Name
-                    </p>
-                    <p>
-                        @item.Price
-                    </p>
-                    <p>
+   @foreach (var item in Model.Product)
+        {
+            <div class="product-item">
+                <div class="img">
+                    <img src=@item.Image>
+                </div>
+                <p class="name">
+                    @item.Name
+                </p>
+                <p class="price">
+                    @item.Price
+                </p>
+                <div class="description">
+                    <p class="info">
                         @item.Info
                     </p>
                 </div>
-            }
-        </div>
-    </div>
-
-</div>
+            </div>
+        }
