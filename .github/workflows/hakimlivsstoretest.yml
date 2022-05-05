@@ -2,7 +2,7 @@ name: Build and deploy .NET Core app to Windows WebApp hakimlivsstoretest
 on:
   push:
     branches:
-    - "#test"
+    - dev
 env:
   AZURE_WEBAPP_NAME: hakimlivsstoretest
   AZURE_WEBAPP_PACKAGE_PATH: hakimlivs/publish
