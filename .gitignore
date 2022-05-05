@@ -5,3 +5,4 @@ hakimlivs/*.csproj.user
 hakimlivs/Data/Migrations/
 hakimlivs/.vscode/
 .vscode/
+.github/
