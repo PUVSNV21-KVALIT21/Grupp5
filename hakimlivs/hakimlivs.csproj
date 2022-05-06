@@ -46,4 +46,13 @@
     <None Include="wwwroot\Images\Zingo.jfif" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Data\Users.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Products.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
