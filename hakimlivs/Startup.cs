@@ -42,6 +42,7 @@ namespace hakimlivs
             {
                 services.AddDbContext<ApplicationDbContext>(options =>
                     options.UseSqlServer(connString));
+                
             }
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)

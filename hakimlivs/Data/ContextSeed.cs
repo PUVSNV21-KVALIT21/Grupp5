@@ -51,6 +51,7 @@ namespace hakimlivs.Data
 
             }
         }
+
         public static async Task InitializeUserAsync(ApplicationDbContext database, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
             if (database.Products.Any())
@@ -90,6 +91,32 @@ namespace hakimlivs.Data
                     await userManager.AddToRoleAsync(user, Roles.Basic.ToString());
                 }
             }
+        }
+
+        public static void InitializeProducts(ApplicationDbContext database)
+        {
+            if (database.Products.Any())
+            {
+                return;
+            }
+
+            string[] lines = File.ReadAllLines("Products.csv");
+
+            foreach (string line in lines)
+            {
+                string[] values = line.Split(";");
+
+                Product product = new Product
+                {
+                    Name = values[0],
+                    Price = decimal.Parse(values[1]),
+                    Category = values[2],
+                    Info = values[3],
+                    Image = values[4],
+                };
+                database.Products.Add(product);
+            }
+            database.SaveChanges();
         }
     }
 }

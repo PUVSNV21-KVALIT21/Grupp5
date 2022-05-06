@@ -14,4 +14,45 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\User\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Images\Allrengöring.jfif" />
+    <None Include="wwwroot\Images\Ballerina.jfif" />
+    <None Include="wwwroot\Images\Brödpinnar.jfif" />
+    <None Include="wwwroot\Images\Deo.jfif" />
+    <None Include="wwwroot\Images\Duschcreme.jfif" />
+    <None Include="wwwroot\Images\Festis.jfif" />
+    <None Include="wwwroot\Images\Grillchips.jfif" />
+    <None Include="wwwroot\Images\Gulasch.jfif" />
+    <None Include="wwwroot\Images\Haklapp.jfif" />
+    <None Include="wwwroot\Images\Hundmat.jfif" />
+    <None Include="wwwroot\Images\Höns.jfif" />
+    <None Include="wwwroot\Images\Kattgodis.jfif" />
+    <None Include="wwwroot\Images\Majs.jfif" />
+    <None Include="wwwroot\Images\Marabou.jfif" />
+    <None Include="wwwroot\Images\Napp.jfif" />
+    <None Include="wwwroot\Images\Olivolja.jfif" />
+    <None Include="wwwroot\Images\Olivolja.png" />
+    <None Include="wwwroot\Images\Proteinbar.jfif" />
+    <None Include="wwwroot\Images\ProteinShake.jfif" />
+    <None Include="wwwroot\Images\Sköljmedel.jfif" />
+    <None Include="wwwroot\Images\Termometer.jfif" />
+    <None Include="wwwroot\Images\Tortilla.jfif" />
+    <None Include="wwwroot\Images\Vätskeersättning.jfif" />
+    <None Include="wwwroot\Images\Våffelrån.jfif" />
+    <None Include="wwwroot\Images\Zingo.jfif" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\Users.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Products.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
