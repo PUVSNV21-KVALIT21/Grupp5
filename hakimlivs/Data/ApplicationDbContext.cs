@@ -8,7 +8,7 @@ using System.Text;
 
 namespace hakimlivs.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<User>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -17,7 +17,7 @@ namespace hakimlivs.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
-        public DbSet<ManageUserRolesViewModel> ManageUserRolesViewModel { get; set; }
+/*        public DbSet<ManageUserRolesViewModel> ManageUserRolesViewModel { get; set; }*/
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -51,6 +51,9 @@ namespace hakimlivs.Data
             {
                 entity.ToTable("UserTokens");
             });
+            modelBuilder.Entity<Product>().ToTable("Product");
+            modelBuilder.Entity<Order>().ToTable("Order");
+            modelBuilder.Entity<OrderDetails>().ToTable("OrderDetails");
         }
     }
 }
