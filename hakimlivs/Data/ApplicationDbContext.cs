@@ -17,7 +17,8 @@ namespace hakimlivs.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
-/*        public DbSet<ManageUserRolesViewModel> ManageUserRolesViewModel { get; set; }*/
+        public DbSet<Cart> Cart { get; set; }
+        /*        public DbSet<ManageUserRolesViewModel> ManageUserRolesViewModel { get; set; }*/
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
