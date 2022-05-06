@@ -10,7 +10,7 @@ using hakimlivs.Data;
 namespace hakimlivs.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220506111056_First")]
+    [Migration("20220506114817_First")]
     partial class First
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
