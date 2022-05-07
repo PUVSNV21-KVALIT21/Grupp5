@@ -9,12 +9,18 @@
 <body>
     <header>
         <a class="hakim-title" asp-area="" asp-page="/Index">hakimlivs</a>
-        <input class="searchbox" type="search" placeholder="sök efter någe"/>
+        
+        <form class="searchbox">
+            <input type="search" placeholder="Sök efter en vara..."/>
+            <button type="submit">Sök</button>
+        </form>
+        
+        
         <div class="login">
                 <partial name="_LoginPartial" />
         </div>
         <select class="cart" cite="varukorg">
-
+            
         </select>
         <button class="cart-button">
             Till kassan
@@ -24,6 +30,7 @@
     <div class="main-container">
 
         <section class="main-menu">
+            <h3>Kategorier</h3>
             <div class="menu-button">
                 <a asp-page="Products/Index">Frukt</a>
             </div>

@@ -8,14 +8,26 @@
 @foreach (var item in Model.Product)
 {
     <div class="product-item">
-        <p>
-            @item.Name
-        </p>
-        <p>
-            @item.Price
-        </p>
-        <p>
-            @item.Info
-        </p>
+        <div class="product-img">
+            <img src=@item.Image>
+        </div>
+        <div class="product-item-main">
+            <p class="product-name">
+                @item.Name
+            </p>
+            <p class="product-description">
+                @item.Info
+            </p>
+        </div>
+        <div class="product-item-footer">
+            <p class="product-price">
+                @item.Price kr
+            </p>
+            <div class="add-to-cart">
+                <a href="">
+                    Lägg till
+                </a>
+            </div>
+        </div>
     </div>
 }
