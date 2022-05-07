@@ -5,11 +5,34 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
+@foreach (var item in Model.Product)
+    {
+        <div class="product-item">
+            <div class="product-img">
+                <img src=@item.Image>
+            </div>
+            <div class="product-item-main">
+                <p class="product-name">
+                    @item.Name
+                </p>
+                <p class="product-description">
+                    @item.Info
+                </p>
+            </div>
+            <div class="product-item-footer">
+                <div class="edit-button">
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Ändra</a>
+                </div>
+                <div class="delete-button">
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Ta bort</a>
+                </div>
+            </div>
+        </div>
+    }
+
+
+@*
 <table class="table">
     <thead>
         <tr>
@@ -57,4 +80,4 @@
         </tr>
 }
     </tbody>
-</table>
+</table>*@
