@@ -13,7 +13,7 @@ namespace hakimlivs.Models
         public decimal Price { get; set; }
 
         [Required]
-        public string Category { get; set; }
+        public Category Category { get; set; }
 
         [Required]
         public string Info { get; set; }

@@ -7,9 +7,7 @@ namespace hakimlivs.Models
 {
     public enum Roles
     {
-        SuperAdmin,
         Admin,
-        Moderator,
         Basic
     }
     public class User : IdentityUser

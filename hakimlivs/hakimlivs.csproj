@@ -50,6 +50,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Data\Categories.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Data\Users.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
