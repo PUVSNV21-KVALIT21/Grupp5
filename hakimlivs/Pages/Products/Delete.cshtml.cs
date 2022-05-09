@@ -13,10 +13,12 @@ namespace hakimlivs.Pages.Products
     public class DeleteModel : PageModel
     {
         private readonly hakimlivs.Data.ApplicationDbContext _context;
+        private readonly AccessControl accessControl;
 
-        public DeleteModel(hakimlivs.Data.ApplicationDbContext context)
+        public DeleteModel(hakimlivs.Data.ApplicationDbContext context, AccessControl accessControl)
         {
             _context = context;
+            this.accessControl = accessControl;
         }
 
         [BindProperty]
@@ -24,6 +26,11 @@ namespace hakimlivs.Pages.Products
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+            if (accessControl.LoggedInUserID == null)
+            {
+                return Forbid();
+            }
+
             if (id == null)
             {
                 return NotFound();
