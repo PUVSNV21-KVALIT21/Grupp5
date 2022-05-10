@@ -21,8 +21,9 @@ namespace hakimlivs.Pages.Products
         }
 
         public Cart Cart { get; set; }
-        public Product Product { get; set; }
-        public IList<Product> Products { get;set; }
+        public Product ProductAdd { get; set; }
+        public IList<Product> Product { get; set; }
+        public IList<Product> Products { get; set; }
         [FromForm]
         public int Id { get; set; }
         [FromQuery]
@@ -30,22 +31,17 @@ namespace hakimlivs.Pages.Products
         [FromForm]
         public string SearchTerm { get; set; }
         public Category Category { get; set; }
-        
-        public async Task OnGetAsync()
-        {
-            Products = await _context.Products.ToListAsync();
-        }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAdd()
         {
-            var Product = await _context.Products.FindAsync(Id);
+            ProductAdd = await _context.Products.FindAsync(Id);
 
             CartItem cartItem = new CartItem
             {
-                Product = Product,
+                Product = ProductAdd,
                 Ammount = 1
             };
-            
+
             /*Cart cart = new Cart*/
             return RedirectToPage();
         }
@@ -56,23 +52,24 @@ namespace hakimlivs.Pages.Products
 
             if (Filter == null)
             {
-                Products = await _context.Products.ToListAsync();
+                Product = await _context.Products.ToListAsync();
             }
             else
             {
-                Products = await _context.Products.Where(p => p.Category == Category).ToListAsync();
+                Product = await _context.Products.Where(p => p.Category == Category).ToListAsync();
             }
         }
 
-        public async Task OnPostAsync()
+        public async Task OnPostSearch()
         {
             if (SearchTerm == null)
             {
-                Products = await _context.Products.ToListAsync();
+                Product = await _context.Products.ToListAsync();
             }
             else
             {
-                Products = await _context.Products.Where(p => p.Name.Contains(SearchTerm) || p.Info.Contains(SearchTerm)).ToListAsync();
+                Product = await _context.Products.Where(p => p.Name.Contains(SearchTerm) || p.Info.Contains(SearchTerm)).ToListAsync();
             }
+        }
     }
 }

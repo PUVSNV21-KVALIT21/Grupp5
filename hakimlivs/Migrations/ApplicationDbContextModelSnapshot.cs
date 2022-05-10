@@ -169,19 +169,12 @@ namespace hakimlivs.Migrations
                     b.ToTable("Cart");
                 });
 
-
             modelBuilder.Entity("hakimlivs.Models.CartItem", b =>
                 {
                     b.Property<int>("Id")
-
-            modelBuilder.Entity("hakimlivs.Models.Category", b =>
-                {
-                    b.Property<int>("ID")
-
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
 
                     b.Property<int>("Ammount")
                         .HasColumnType("int");
@@ -199,6 +192,14 @@ namespace hakimlivs.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("CartItem");
+                });
+
+            modelBuilder.Entity("hakimlivs.Models.Category", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -206,7 +207,6 @@ namespace hakimlivs.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Categories");
-
                 });
 
             modelBuilder.Entity("hakimlivs.Models.Order", b =>
@@ -487,11 +487,6 @@ namespace hakimlivs.Migrations
                     b.Navigation("Product");
                 });
 
-
-            modelBuilder.Entity("hakimlivs.Models.Cart", b =>
-                {
-                    b.Navigation("CartItem");
-
             modelBuilder.Entity("hakimlivs.Models.Product", b =>
                 {
                     b.HasOne("hakimlivs.Models.Category", "Category")
@@ -499,7 +494,11 @@ namespace hakimlivs.Migrations
                         .HasForeignKey("CategoryID");
 
                     b.Navigation("Category");
+                });
 
+            modelBuilder.Entity("hakimlivs.Models.Cart", b =>
+                {
+                    b.Navigation("CartItem");
                 });
 
             modelBuilder.Entity("hakimlivs.Models.User", b =>
