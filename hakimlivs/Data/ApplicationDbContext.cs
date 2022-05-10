@@ -17,7 +17,8 @@ namespace hakimlivs.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
-        public DbSet<Cart> Cart { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
         /*        public DbSet<ManageUserRolesViewModel> ManageUserRolesViewModel { get; set; }*/
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -55,6 +56,8 @@ namespace hakimlivs.Data
             modelBuilder.Entity<Product>().ToTable("Product");
             modelBuilder.Entity<Order>().ToTable("Order");
             modelBuilder.Entity<OrderDetails>().ToTable("OrderDetails");
+            modelBuilder.Entity<Cart>().ToTable("Cart");
+            modelBuilder.Entity<CartItem>().ToTable("CartItem");
         }
     }
 }

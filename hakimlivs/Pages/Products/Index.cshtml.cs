@@ -18,12 +18,29 @@ namespace hakimlivs.Pages.Products
         {
             _context = context;
         }
-
-        public IList<Product> Product { get;set; }
-
+        public Cart Cart { get; set; }
+        public Product Product { get; set; }
+        public IList<Product> Products { get;set; }
+        [FromForm]
+        public int Id { get; set; }
         public async Task OnGetAsync()
         {
-            Product = await _context.Products.ToListAsync();
+            Products = await _context.Products.ToListAsync();
         }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            var Product = await _context.Products.FindAsync(Id);
+
+            CartItem cartItem = new CartItem
+            {
+                Product = Product,
+                Ammount = 1
+            };
+            
+            /*Cart cart = new Cart*/
+            return RedirectToPage();
+        }
+
     }
 }
