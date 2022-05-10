@@ -1,0 +1,19 @@
+﻿@page "{id:int}"
+@model hakimlivs.Pages.Orders.DetailsModel
+@{
+}
+
+<main class="content">
+    @foreach (var details in Model.OrderDetails)
+    {
+        <img src=@details.Product.Image >
+        <p>@details.Product.Name</p>
+        <p>@details.Product.Price</p>
+        <p>@details.Product.Category</p>
+        <p>@details.Amount</p>
+        int amount = @details.Amount;
+        decimal price = @details.Product.Price;
+        decimal sum = amount * price;
+        <p>Total: @sum</p>
+    }
+</main>

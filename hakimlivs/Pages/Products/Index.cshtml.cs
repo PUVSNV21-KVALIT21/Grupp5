@@ -21,7 +21,6 @@ namespace hakimlivs.Pages.Products
             this.database = database;
             this.accessControl = accessControl;
         }
-
         public Product AddCartProduct { get; set; }
         public IList<Product> Product { get; set; }
         [FromForm]
@@ -33,7 +32,6 @@ namespace hakimlivs.Pages.Products
         public Category Category { get; set; }
         public Cart Cart { get; set; }
         public CartItem CartItem { get; set; }
-
         public async Task OnGetAsync()
         {
             Category = await database.Categories.Where(c => c.Name == Filter).FirstOrDefaultAsync();

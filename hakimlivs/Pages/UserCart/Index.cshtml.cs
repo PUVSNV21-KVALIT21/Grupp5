@@ -3,6 +3,7 @@ using hakimlivs.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -73,6 +74,7 @@ namespace hakimlivs.Pages.UserCart
             }
 
             Order.OrderDetails = details;
+            Order.Date = DateTime.Now;
 
             CheckPrice(CartItems);
             

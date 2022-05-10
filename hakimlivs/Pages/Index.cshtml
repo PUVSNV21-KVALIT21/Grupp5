@@ -1,5 +1,4 @@
 ﻿@page
-@addTagHelper*, Microsoft.AspNetCore.Mvc.TagHelpers
 @model Products.IndexModel
 @inject ApplicationDbContext database
 @{
@@ -55,32 +54,60 @@
 </div>
 
 <div class="product-div">
-    @foreach (var item in Model.Product)
+    @if (User.IsInRole("Basic"))
     {
-        <div class="product-item">
-            <div class="product-img">
-                <img src=@item.Image>
-            </div>
-            <div class="product-item-main">
-                <p class="product-name">
-                    @item.Name
-                </p>
-                <p class="product-description">
-                    @item.Info
-                </p>
-            </div>
-            <div class="product-item-footer">
-                <p class="product-price">
-                    @item.Price kr
-                </p>
-                <div class="add-to-cart">
-                    <form method="post" asp-page-handler="add" onclick=showMessage(@item.Name)>
-                        <button type="submit" name="Id" id="Id" value="@item.Id">
-                            Lägg till
-                        </button>
-                    </form>
+        @foreach (var item in Model.Product)
+        {
+            <div class="product-item">
+                <div class="product-img">
+                    <img src=@item.Image>
+                </div>
+                <div class="product-item-main">
+                    <p class="product-name">
+                        @item.Name
+                    </p>
+                    <p class="product-description">
+                        @item.Info
+                    </p>
+                </div>
+                <div class="product-item-footer">
+                    <p class="product-price">
+                        @item.Price kr
+                    </p>
+                    <div class="add-to-cart">
+                        <form method="post" asp-page-handler="add" onclick=showMessage(@item.Name)>
+                            <button type="submit" name="Id" id="Id" value="@item.Id">
+                                Lägg till
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
+        }
     }
+    else
+    {
+        @foreach (var item in Model.Product)
+        {
+            <div class="product-item">
+                <div class="product-img">
+                    <img src=@item.Image>
+                </div>
+                <div class="product-item-main">
+                    <p class="product-name">
+                        @item.Name
+                    </p>
+                    <p class="product-description">
+                        @item.Info
+                    </p>
+                </div>
+                <div class="product-item-footer">
+                    <p class="product-price">
+                        @item.Price kr
+                    </p>
+                </div>
+            </div>
+        }
+    }
+
 </div>
