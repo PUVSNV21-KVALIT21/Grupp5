@@ -1,0 +1,17 @@
+﻿@page
+@model hakimlivs.Pages.Orders.IndexModel
+@{
+}
+
+<main>
+    @foreach (var order in Model.Order)
+    {
+        @if(User.IsInRole("Admin"))
+        {
+            <p>@order.User.Email</p>
+        }
+        <p>@order.Id</p>
+        <p>@order.Date</p>
+        <a asp-page="./Details" asp-route-id="@order.Id">Se orderinfo</a>
+    }
+</main>

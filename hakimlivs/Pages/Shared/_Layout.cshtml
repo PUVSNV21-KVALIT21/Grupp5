@@ -14,9 +14,10 @@
             <input type="search" name="SearchTerm" id="SearchTerm" placeholder="Sök efter en vara..."/>
             <button type="submit">Sök</button>
         </form>
-        <select class="cart" cite="varukorg">
-        </select>
-        <a asp-area="" asp-page="/UserCart/Index">Till din varukorg</a>
+        @if (User.IsInRole("Basic"))
+        {
+            <a asp-area="" asp-page="/UserCart/Index">Till din varukorg</a>
+        }
     </header>
 
         <main class="content">
