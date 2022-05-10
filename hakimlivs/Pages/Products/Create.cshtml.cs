@@ -9,44 +9,51 @@ using hakimlivs.Data;
 using hakimlivs.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 
 namespace hakimlivs.Pages.Products
 {
     public class CreateModel : PageModel
     {
-        private readonly hakimlivs.Data.ApplicationDbContext _context;
+        private readonly hakimlivs.Data.ApplicationDbContext database;
         private readonly AccessControl accessControl;
 
-        public CreateModel(hakimlivs.Data.ApplicationDbContext context, AccessControl accessControl)
+        public CreateModel(hakimlivs.Data.ApplicationDbContext database, AccessControl accessControl)
         {
-            _context = context;
+            this.database = database;
             this.accessControl = accessControl;
         }
-
-        public IActionResult OnGet()
-        {
-            if (accessControl.LoggedInUserID == null)
-            {
-                return Forbid();
-            }
-            return Page();
-        }
-
-        [BindProperty]
         public Product Product { get; set; }
-
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        public async Task<IActionResult> OnPostAsync()
+        public List<SelectListItem> Categories { get; set; }
+        public Category Category { get; set; }
+        
+        public async Task OnGetAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            Categories = await database.Categories.AsNoTracking()
+                .Select(c => new SelectListItem
+                {
+                    Value = c.ID.ToString(),
+                    Text = c.Name
+                })
+                .ToListAsync();
 
-            _context.Products.Add(Product);
-            await _context.SaveChangesAsync();
+        }
+        public async Task<IActionResult> OnPostAsync(Product product)
+        {
+            Product = new Product();
 
-            return RedirectToPage("./Index");
+            Category = await database.Categories.FindAsync(product.Category.ID);
+
+            Product.Name = product.Name;
+            Product.Price = product.Price;
+            Product.Category = Category;
+            Product.Info = product.Info;
+            Product.Image = product.Image;
+
+            await database.Products.AddAsync(Product);
+            await database.SaveChangesAsync();
+
+            return RedirectToPage("./Details", new { id = Product.Id });
         }
     }
 }

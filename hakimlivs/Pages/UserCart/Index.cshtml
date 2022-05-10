@@ -1,0 +1,36 @@
+﻿@page
+@model hakimlivs.Pages.UserCart.IndexModel
+@{
+}
+
+
+<main class="cart-details">
+    @foreach (var details in Model.CartItems)
+    {
+        <div>
+            <img src=@details.Product.Image />
+            <p>@details.Product.Name</p>
+            <p>@details.Amount</p>
+            <form method="post" asp-page-handler="plus" asp-route-id="@details.Id" style="display: inline">
+                <button type="submit">+</button>
+            </form>
+            <form method="post" asp-page-handler="minus" asp-route-id="@details.Id" style="display: inline">
+                <button type="submit">-</button>
+            </form>
+            <form method="post" asp-page-handler="delete" asp-route-id="@details.Id" style="display: inline">
+                <button type="submit">x</button>
+            </form>
+        </div>
+    }
+    @if (Model.CartItems.Count() == 0)
+    {
+
+    }
+    else
+    {
+        <form method="post">
+            <button>Order</button>
+        </form>
+        <label>@Model.Sum</label>
+    }
+</main>

@@ -1,4 +1,5 @@
 ﻿@page
+@addTagHelper*, Microsoft.AspNetCore.Mvc.TagHelpers
 @model Products.IndexModel
 @inject ApplicationDbContext database
 @{
@@ -6,80 +7,80 @@
 }
 
 <div>
-     @if (User.IsInRole("Admin"))
-{
-    <section class="main-menu">
-        <h3>Adminpanel</h3>
-        <div class="menu-button">
-            <a asp-area="" asp-page="/Products/Create">Lägg till produkter</a>
-        </div>
-        <div class="menu-button">
-            <a asp-area="" asp-page="/Products/Index">Ändra produkter</a>
-        </div>
-        <div class="menu-button">
-            <a asp-area="" asp-page="/Orders/Index">Ordrar</a>
-        </div>
-        <div class="menu-button">
-            <a asp-area="" asp-page="/Admin/RoleManager/Index">Lägg till roller</a>
-        </div>
-        <div class="menu-button">
-            <a asp-area="" asp-page="/Admin/UserRoles/Index">Rollhantering</a>
-        </div>
-        <div class="login-area">
-            <div class="login-card">
-                <partial name="_LoginPartial" />
-            </div>
-        </div>
-    </section>
-}
-else
-{
-    <section class="main-menu">
-        <h3>Kategorier</h3>
-        @foreach (var category in database.Categories)
-        {
+    @if (User.IsInRole("Admin"))
+    {
+        <section class="main-menu">
+            <h3>Adminpanel</h3>
             <div class="menu-button">
-                <form method="get">
-                    <button type="submit" name="Filter" id="Filter" value="@category.Name">@category.Name</button>
-                </form>
+                <a asp-area="" asp-page="/Products/Create">Lägg till produkter</a>
             </div>
-        }
-        <div class="login-area">
-            <div class="login-card">
-                <partial name="_LoginPartial" />
+            <div class="menu-button">
+                <a asp-area="" asp-page="/Products/Index">Ändra produkter</a>
             </div>
-        </div>
-    </section>
-}
+            <div class="menu-button">
+                <a asp-area="" asp-page="/Orders/Index">Ordrar</a>
+            </div>
+            <div class="menu-button">
+                <a asp-area="" asp-page="/Admin/RoleManager/Index">Lägg till roller</a>
+            </div>
+            <div class="menu-button">
+                <a asp-area="" asp-page="/Admin/UserRoles/Index">Rollhantering</a>
+            </div>
+            <div class="login-area">
+                <div class="login-card">
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </section>
+    }
+    else
+    {
+        <section class="main-menu">
+            <h3>Kategorier</h3>
+            @foreach (var category in database.Categories)
+            {
+                <div class="menu-button">
+                    <form method="get">
+                        <button type="submit" name="Filter" id="Filter" value="@category.Name">@category.Name</button>
+                    </form>
+                </div>
+            }
+            <div class="login-area">
+                <div class="login-card">
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </section>
+    }
 </div>
 
 <div class="product-div">
     @foreach (var item in Model.Product)
-        {
-            <div class="product-item">
-                <div class="product-img">
-                    <img src=@item.Image>
-                </div>
-                <div class="product-item-main">
-                    <p class="product-name">
-                        @item.Name
-                    </p>
-                    <p class="product-description">
-                        @item.Info
-                    </p>
-                </div>
-                <div class="product-item-footer">
-                    <p class="product-price">
-                        @item.Price kr
-                    </p>
-                    <div class="add-to-cart">
-                        <form id="1" method="post" asp-page-handler="add">
-                            <button type="submit" name="Id" id="Id" value="@item.Id">
-                                Lägg till
-                            </button>
-                        </form>
-                    </div>
+    {
+        <div class="product-item">
+            <div class="product-img">
+                <img src=@item.Image>
+            </div>
+            <div class="product-item-main">
+                <p class="product-name">
+                    @item.Name
+                </p>
+                <p class="product-description">
+                    @item.Info
+                </p>
+            </div>
+            <div class="product-item-footer">
+                <p class="product-price">
+                    @item.Price kr
+                </p>
+                <div class="add-to-cart">
+                    <form method="post" asp-page-handler="add" onclick=showMessage(@item.Name)>
+                        <button type="submit" name="Id" id="Id" value="@item.Id">
+                            Lägg till
+                        </button>
+                    </form>
                 </div>
             </div>
-        }
+        </div>
+    }
 </div>

@@ -284,3 +284,7 @@ footer {
     background-color: red;
     color: white;
 }
+
+.cart-details {
+    display: flex;
+}
