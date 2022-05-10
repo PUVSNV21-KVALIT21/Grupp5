@@ -10,7 +10,7 @@ using hakimlivs.Data;
 namespace hakimlivs.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220510092844_First")]
+    [Migration("20220510113457_First")]
     partial class First
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -178,7 +178,7 @@ namespace hakimlivs.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Ammount")
+                    b.Property<int>("Amount")
                         .HasColumnType("int");
 
                     b.Property<int>("CartId")
@@ -473,7 +473,7 @@ namespace hakimlivs.Migrations
             modelBuilder.Entity("hakimlivs.Models.OrderDetails", b =>
                 {
                     b.HasOne("hakimlivs.Models.Order", "Order")
-                        .WithMany()
+                        .WithMany("OrderDetails")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -501,6 +501,11 @@ namespace hakimlivs.Migrations
             modelBuilder.Entity("hakimlivs.Models.Cart", b =>
                 {
                     b.Navigation("CartItem");
+                });
+
+            modelBuilder.Entity("hakimlivs.Models.Order", b =>
+                {
+                    b.Navigation("OrderDetails");
                 });
 
             modelBuilder.Entity("hakimlivs.Models.User", b =>
