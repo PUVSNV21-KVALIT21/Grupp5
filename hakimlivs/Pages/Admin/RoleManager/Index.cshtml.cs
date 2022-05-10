@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace hakimlivs.Pages.Admin.RoleManager
 {
-    [Authorize(Roles = "SuperAdmin, Admin")]
+    [Authorize(Roles = "Admin")]
     public class IndexModel : PageModel
     {
         RoleManager<IdentityRole> _roleManager;

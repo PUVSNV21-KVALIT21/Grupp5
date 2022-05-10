@@ -9,37 +9,30 @@ using Microsoft.EntityFrameworkCore;
 using hakimlivs.Data;
 using hakimlivs.Models;
 
-namespace hakimlivs.Pages.Products
+namespace hakimlivs.Pages.CartItems
 {
     public class EditModel : PageModel
     {
         private readonly hakimlivs.Data.ApplicationDbContext _context;
-        private readonly AccessControl accessControl;
 
-        public EditModel(hakimlivs.Data.ApplicationDbContext context, AccessControl accessControl)
+        public EditModel(hakimlivs.Data.ApplicationDbContext context)
         {
             _context = context;
-            this.accessControl = accessControl;
         }
 
         [BindProperty]
-        public Product Product { get; set; }
+        public CartItem CartItem { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (accessControl.LoggedInUserID == null)
-            {
-                return Forbid();
-            }
-
             if (id == null)
             {
                 return NotFound();
             }
 
-            Product = await _context.Products.FirstOrDefaultAsync(m => m.Id == id);
+            CartItem = await _context.CartItems.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Product == null)
+            if (CartItem == null)
             {
                 return NotFound();
             }
@@ -55,7 +48,7 @@ namespace hakimlivs.Pages.Products
                 return Page();
             }
 
-            _context.Attach(Product).State = EntityState.Modified;
+            _context.Attach(CartItem).State = EntityState.Modified;
 
             try
             {
@@ -63,7 +56,7 @@ namespace hakimlivs.Pages.Products
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProductExists(Product.Id))
+                if (!CartItemExists(CartItem.Id))
                 {
                     return NotFound();
                 }
@@ -76,9 +69,9 @@ namespace hakimlivs.Pages.Products
             return RedirectToPage("./Index");
         }
 
-        private bool ProductExists(int id)
+        private bool CartItemExists(int id)
         {
-            return _context.Products.Any(e => e.Id == id);
+            return _context.CartItems.Any(e => e.Id == id);
         }
     }
 }

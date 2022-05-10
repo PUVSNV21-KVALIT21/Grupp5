@@ -7,33 +7,25 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using hakimlivs.Data;
 using hakimlivs.Models;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Http;
 
-namespace hakimlivs.Pages.Products
+namespace hakimlivs.Pages.CartItems
 {
     public class CreateModel : PageModel
     {
         private readonly hakimlivs.Data.ApplicationDbContext _context;
-        private readonly AccessControl accessControl;
 
-        public CreateModel(hakimlivs.Data.ApplicationDbContext context, AccessControl accessControl)
+        public CreateModel(hakimlivs.Data.ApplicationDbContext context)
         {
             _context = context;
-            this.accessControl = accessControl;
         }
 
         public IActionResult OnGet()
         {
-            if (accessControl.LoggedInUserID == null)
-            {
-                return Forbid();
-            }
             return Page();
         }
 
         [BindProperty]
-        public Product Product { get; set; }
+        public CartItem CartItem { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -43,7 +35,7 @@ namespace hakimlivs.Pages.Products
                 return Page();
             }
 
-            _context.Products.Add(Product);
+            _context.CartItems.Add(CartItem);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

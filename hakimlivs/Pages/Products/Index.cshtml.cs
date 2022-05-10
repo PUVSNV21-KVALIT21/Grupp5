@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using hakimlivs.Data;
 using hakimlivs.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace hakimlivs.Pages.Products
 {
@@ -19,11 +20,56 @@ namespace hakimlivs.Pages.Products
             _context = context;
         }
 
-        public IList<Product> Product { get;set; }
+        public Cart Cart { get; set; }
+        public Product ProductAdd { get; set; }
+        public IList<Product> Product { get; set; }
+        public IList<Product> Products { get; set; }
+        [FromForm]
+        public int Id { get; set; }
+        [FromQuery]
+        public string Filter { get; set; }
+        [FromForm]
+        public string SearchTerm { get; set; }
+        public Category Category { get; set; }
+
+        public async Task<IActionResult> OnPostAdd()
+        {
+            ProductAdd = await _context.Products.FindAsync(Id);
+
+            CartItem cartItem = new CartItem
+            {
+                Product = ProductAdd,
+                Ammount = 1
+            };
+
+            /*Cart cart = new Cart*/
+            return RedirectToPage();
+        }
 
         public async Task OnGetAsync()
         {
-            Product = await _context.Products.ToListAsync();
+            Category = await _context.Categories.Where(c => c.Name == Filter).FirstOrDefaultAsync();
+
+            if (Filter == null)
+            {
+                Product = await _context.Products.ToListAsync();
+            }
+            else
+            {
+                Product = await _context.Products.Where(p => p.Category == Category).ToListAsync();
+            }
+        }
+
+        public async Task OnPostSearch()
+        {
+            if (SearchTerm == null)
+            {
+                Product = await _context.Products.ToListAsync();
+            }
+            else
+            {
+                Product = await _context.Products.Where(p => p.Name.Contains(SearchTerm) || p.Info.Contains(SearchTerm)).ToListAsync();
+            }
         }
     }
 }

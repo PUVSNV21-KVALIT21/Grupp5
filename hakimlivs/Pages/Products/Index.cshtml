@@ -5,8 +5,37 @@
     ViewData["Title"] = "Index";
 }
 
+<div>
+    @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin") || User.IsInRole("Moderator"))
+{
+    <section class="main-menu">
+        <h3>Adminpanel</h3>
+        <div class="menu-button">
+            <a asp-area="" asp-page="/Products/Create">Lägg till produkter</a>
+        </div>
+        <div class="menu-button">
+            <a asp-area="" asp-page="/Products/Index">Ändra produkter</a>
+        </div>
+        <div class="menu-button">
+            <a asp-area="" asp-page="/Orders/Index">Ordrar</a>
+        </div>
+        <div class="menu-button">
+            <a asp-area="" asp-page="/Admin/RoleManager/Index">Lägg till roller</a>
+        </div>
+        <div class="menu-button">
+            <a asp-area="" asp-page="/Admin/UserRoles/Index">Rollhantering</a>
+        </div>
+        <div class="login-area">
+            <div class="login-card">
+                <partial name="_LoginPartial" />
+            </div>
+        </div>
+    </section>
+}
+</div>
 
-@foreach (var item in Model.Product)
+<div class="product-div">
+    @foreach (var item in Model.Products)
     {
         <div class="product-item">
             <div class="product-img">
@@ -30,54 +59,3 @@
             </div>
         </div>
     }
-
-
-@*
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Info)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product[0].Image)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Product) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Info)
-            </td>
-            <td>
-                <img src=@item.Image>
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>*@

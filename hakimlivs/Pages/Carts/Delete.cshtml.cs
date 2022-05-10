@@ -8,37 +8,31 @@ using Microsoft.EntityFrameworkCore;
 using hakimlivs.Data;
 using hakimlivs.Models;
 
-namespace hakimlivs.Pages.Products
+namespace hakimlivs.Pages.Carts
 {
     public class DeleteModel : PageModel
     {
         private readonly hakimlivs.Data.ApplicationDbContext _context;
-        private readonly AccessControl accessControl;
 
-        public DeleteModel(hakimlivs.Data.ApplicationDbContext context, AccessControl accessControl)
+        public DeleteModel(hakimlivs.Data.ApplicationDbContext context)
         {
             _context = context;
-            this.accessControl = accessControl;
         }
 
         [BindProperty]
-        public Product Product { get; set; }
+        public Cart Cart { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (accessControl.LoggedInUserID == null)
-            {
-                return Forbid();
-            }
-
             if (id == null)
             {
                 return NotFound();
             }
 
-            Product = await _context.Products.FirstOrDefaultAsync(m => m.Id == id);
+            Cart = await _context.Carts
+                .Include(c => c.User).FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Product == null)
+            if (Cart == null)
             {
                 return NotFound();
             }
@@ -52,11 +46,11 @@ namespace hakimlivs.Pages.Products
                 return NotFound();
             }
 
-            Product = await _context.Products.FindAsync(id);
+            Cart = await _context.Carts.FindAsync(id);
 
-            if (Product != null)
+            if (Cart != null)
             {
-                _context.Products.Remove(Product);
+                _context.Carts.Remove(Cart);
                 await _context.SaveChangesAsync();
             }
 

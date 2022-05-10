@@ -17,7 +17,7 @@ namespace hakimlivs.Pages
             _logger = logger;
         }
 
-        public void OnGet()
+        public void OnPost(int id)
         {
 
         }

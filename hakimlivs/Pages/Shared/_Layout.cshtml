@@ -1,86 +1,30 @@
-﻿<!DOCTYPE html>
+﻿    @using hakimlivs.Models
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Hakim Livs</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+ 
 </head>
 <body>
     <header>
         <a class="hakim-title" asp-area="" asp-page="/Index">hakimlivs</a>
-        
-        <form class="searchbox">
-            <input type="search" placeholder="Sök efter en vara..."/>
+        <form method="post" class="searchbox" asp-page-handler="search">
+            <input type="search" name="SearchTerm" id="SearchTerm" placeholder="Sök efter en vara..."/>
             <button type="submit">Sök</button>
         </form>
         <select class="cart" cite="varukorg">
-            
         </select>
         <button class="cart-button">
             Till kassan
         </button>
     </header>
 
-    <div class="main-container">
-        
-            @if (User.Identity.IsAuthenticated || User.IsInRole("SuperAdmin") || User.IsInRole("Admin") || User.IsInRole("Moderator"))
-                {
-                    <section class="main-menu">
-                            <h3>Adminpanel</h3>
-                            <div class="menu-button">
-                                <a asp-area="" asp-page="/Products/Create">Lägg till produkter</a>
-                            </div>
-                            <div class="menu-button">
-                                <a asp-area="" asp-page="/Products/Index">Ändra produkter</a>
-                            </div>
-                            <div class="menu-button">
-                                <a asp-area="" asp-page="/Orders/Index">Ordrar</a>
-                            </div>
-                            <div class="menu-button">
-                                <a asp-area="" asp-page="/Admin/RoleManager/Index">Lägg till roller</a>
-                            </div>
-                            <div class="menu-button">
-                                <a asp-area="" asp-page="/Admin/UserRoles/Index">Rollhantering</a>
-                            </div>
-                            <div class="login-area">
-                                <div class="login-card">
-                                    <partial name="_LoginPartial" />
-                                </div>
-                            </div>
-                        </section>
-                }
-            else if (!User.Identity.IsAuthenticated || User.IsInRole("Basic"))
-                {
-                    <section class="main-menu">
-                        <h3>Kategorier</h3>
-                        <div class="menu-button">
-                            <a href="">Frukt</a>
-                        </div>
-                        <div class="menu-button">
-                            <a href="">Läsk</a>
-                        </div>
-                        <div class="menu-button">
-                            <a href="">Kött</a>
-                        </div>
-                        <div class="menu-button">
-                            <a href="">Fisk</a>
-                        </div>
-                        <div class="menu-button">
-                            <a href="">Bacon</a>
-                        </div>
-                        <div class="login-area">
-                            <div class="login-card">
-                                <partial name="_LoginPartial" />
-                            </div>
-                        </div>
-                    </section>
-                }
-
         <main class="content">
             @RenderBody()
         </main>
-    </div>
 
     <footer>
         <div class="container">
