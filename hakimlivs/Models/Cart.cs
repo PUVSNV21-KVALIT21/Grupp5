@@ -1,8 +1,15 @@
-﻿namespace hakimlivs.Models
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+namespace hakimlivs.Models
 {
     public class Cart
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
+        public int Id { get; set; }
+        public User User { get; set; }
+        [Required]
+        public string UserId { get; set; }
+        public List<CartItem> CartItem {get; set;}
+
     }
 }

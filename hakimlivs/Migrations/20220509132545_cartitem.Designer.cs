@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using hakimlivs.Data;
 
 namespace hakimlivs.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220509132545_cartitem")]
+    partial class cartitem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -169,19 +171,12 @@ namespace hakimlivs.Migrations
                     b.ToTable("Cart");
                 });
 
-
             modelBuilder.Entity("hakimlivs.Models.CartItem", b =>
                 {
                     b.Property<int>("Id")
-
-            modelBuilder.Entity("hakimlivs.Models.Category", b =>
-                {
-                    b.Property<int>("ID")
-
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
 
                     b.Property<int>("Ammount")
                         .HasColumnType("int");
@@ -199,14 +194,6 @@ namespace hakimlivs.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("CartItem");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Categories");
-
                 });
 
             modelBuilder.Entity("hakimlivs.Models.Order", b =>
@@ -262,8 +249,9 @@ namespace hakimlivs.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CategoryID")
-                        .HasColumnType("int");
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
                         .IsRequired()
@@ -281,8 +269,6 @@ namespace hakimlivs.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryID");
 
                     b.ToTable("Product");
                 });
@@ -487,19 +473,9 @@ namespace hakimlivs.Migrations
                     b.Navigation("Product");
                 });
 
-
             modelBuilder.Entity("hakimlivs.Models.Cart", b =>
                 {
                     b.Navigation("CartItem");
-
-            modelBuilder.Entity("hakimlivs.Models.Product", b =>
-                {
-                    b.HasOne("hakimlivs.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryID");
-
-                    b.Navigation("Category");
-
                 });
 
             modelBuilder.Entity("hakimlivs.Models.User", b =>
