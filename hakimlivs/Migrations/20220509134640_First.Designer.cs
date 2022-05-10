@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using hakimlivs.Data;
 
 namespace hakimlivs.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220509134640_First")]
+    partial class First
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -153,52 +155,25 @@ namespace hakimlivs.Migrations
 
             modelBuilder.Entity("hakimlivs.Models.Cart", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
+                    b.HasKey("ID");
 
                     b.ToTable("Cart");
                 });
 
-
-            modelBuilder.Entity("hakimlivs.Models.CartItem", b =>
-                {
-                    b.Property<int>("Id")
-
             modelBuilder.Entity("hakimlivs.Models.Category", b =>
                 {
                     b.Property<int>("ID")
-
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-
-                    b.Property<int>("Ammount")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CartId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CartId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("CartItem");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -206,7 +181,6 @@ namespace hakimlivs.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Categories");
-
                 });
 
             modelBuilder.Entity("hakimlivs.Models.Order", b =>
@@ -429,34 +403,6 @@ namespace hakimlivs.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("hakimlivs.Models.Cart", b =>
-                {
-                    b.HasOne("hakimlivs.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("hakimlivs.Models.CartItem", b =>
-                {
-                    b.HasOne("hakimlivs.Models.Cart", "Cart")
-                        .WithMany("CartItem")
-                        .HasForeignKey("CartId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("hakimlivs.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId");
-
-                    b.Navigation("Cart");
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("hakimlivs.Models.Order", b =>
                 {
                     b.HasOne("hakimlivs.Models.User", "User")
@@ -487,11 +433,6 @@ namespace hakimlivs.Migrations
                     b.Navigation("Product");
                 });
 
-
-            modelBuilder.Entity("hakimlivs.Models.Cart", b =>
-                {
-                    b.Navigation("CartItem");
-
             modelBuilder.Entity("hakimlivs.Models.Product", b =>
                 {
                     b.HasOne("hakimlivs.Models.Category", "Category")
@@ -499,7 +440,6 @@ namespace hakimlivs.Migrations
                         .HasForeignKey("CategoryID");
 
                     b.Navigation("Category");
-
                 });
 
             modelBuilder.Entity("hakimlivs.Models.User", b =>

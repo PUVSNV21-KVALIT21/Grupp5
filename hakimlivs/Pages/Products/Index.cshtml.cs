@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using hakimlivs.Data;
 using hakimlivs.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace hakimlivs.Pages.Products
 {
@@ -18,11 +19,18 @@ namespace hakimlivs.Pages.Products
         {
             _context = context;
         }
+
         public Cart Cart { get; set; }
         public Product Product { get; set; }
         public IList<Product> Products { get;set; }
         [FromForm]
         public int Id { get; set; }
+        [FromQuery]
+        public string Filter { get; set; }
+        [FromForm]
+        public string SearchTerm { get; set; }
+        public Category Category { get; set; }
+        
         public async Task OnGetAsync()
         {
             Products = await _context.Products.ToListAsync();
@@ -42,5 +50,29 @@ namespace hakimlivs.Pages.Products
             return RedirectToPage();
         }
 
+        public async Task OnGetAsync()
+        {
+            Category = await _context.Categories.Where(c => c.Name == Filter).FirstOrDefaultAsync();
+
+            if (Filter == null)
+            {
+                Products = await _context.Products.ToListAsync();
+            }
+            else
+            {
+                Products = await _context.Products.Where(p => p.Category == Category).ToListAsync();
+            }
+        }
+
+        public async Task OnPostAsync()
+        {
+            if (SearchTerm == null)
+            {
+                Products = await _context.Products.ToListAsync();
+            }
+            else
+            {
+                Products = await _context.Products.Where(p => p.Name.Contains(SearchTerm) || p.Info.Contains(SearchTerm)).ToListAsync();
+            }
     }
 }

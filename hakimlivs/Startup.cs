@@ -30,6 +30,8 @@ namespace hakimlivs
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpContextAccessor();
+            services.AddTransient<AccessControl>();
             var connString = GetSqlConnectionString("hakimlivsdb");
             File.WriteAllText("log.txt", connString);
             if (String.IsNullOrEmpty(connString))
@@ -62,6 +64,7 @@ namespace hakimlivs
                     options.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
                     options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
                 });
+
         }
         public static string GetSqlConnectionString(string name)
         {

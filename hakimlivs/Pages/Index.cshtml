@@ -1,10 +1,11 @@
 ﻿@page
 @model Products.IndexModel
+@inject ApplicationDbContext database
 @{
     ViewData["Title"] = "Home page";
 }
-    
-    @foreach (var item in Model.Products)
+
+@foreach (var item in Model.Products)
     {
         <div class="product-item">
             <div class="product-img">

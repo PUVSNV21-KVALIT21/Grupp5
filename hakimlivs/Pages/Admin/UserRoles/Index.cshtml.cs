@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace hakimlivs.Pages.Admin.UserRoles
 {
-    [Authorize(Roles = "SuperAdmin, Admin, Moderator, Basic")]
+    [Authorize(Roles = "Admin, Basic")]
     public class IndexModel : PageModel
     {
         private readonly UserManager<User> _userManager;
@@ -26,7 +26,7 @@ namespace hakimlivs.Pages.Admin.UserRoles
 
         public async Task<IActionResult> OnGetAsync()
         {
-            if (User.IsInRole("SuperAdmin"))
+            if (User.IsInRole("Admin"))
             {
                 var users = await _userManager.Users.ToListAsync();
                 UserRolesViewModel = new List<UserRolesViewModel>();
