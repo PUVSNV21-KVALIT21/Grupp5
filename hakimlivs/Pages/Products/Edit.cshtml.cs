@@ -13,72 +13,50 @@ namespace hakimlivs.Pages.Products
 {
     public class EditModel : PageModel
     {
-        private readonly hakimlivs.Data.ApplicationDbContext _context;
+        private readonly hakimlivs.Data.ApplicationDbContext database;
         private readonly AccessControl accessControl;
 
-        public EditModel(hakimlivs.Data.ApplicationDbContext context, AccessControl accessControl)
+        public EditModel(hakimlivs.Data.ApplicationDbContext database, AccessControl accessControl)
         {
-            _context = context;
+            this.database = database;
             this.accessControl = accessControl;
         }
-
-        [BindProperty]
         public Product Product { get; set; }
+        public List<SelectListItem> Categories { get; set; }
+        public Category Category { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        private async Task LoadProduct(int id)
         {
-            if (accessControl.LoggedInUserID == null)
-            {
-                return Forbid();
-            }
-
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Product = await _context.Products.FirstOrDefaultAsync(m => m.Id == id);
-
-            if (Product == null)
-            {
-                return NotFound();
-            }
-            return Page();
+            Product = await database.Products.SingleAsync(p => p.Id == id);
         }
-
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task OnGetAsync(int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            await LoadProduct(id);
 
-            _context.Attach(Product).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ProductExists(Product.Id))
+            Categories = await database.Categories.AsNoTracking()
+                .Select(c => new SelectListItem
                 {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+                    Value = c.ID.ToString(),
+                    Text = c.Name
+                })
+                .ToListAsync();
 
-            return RedirectToPage("./Index");
         }
-
-        private bool ProductExists(int id)
+        public async Task<IActionResult> OnPostAsync(int id, Product product)
         {
-            return _context.Products.Any(e => e.Id == id);
+            await LoadProduct(id);
+
+            Category = await database.Categories.FindAsync(product.Category.ID);
+
+            Product.Name = product.Name;
+            Product.Price = product.Price;
+            Product.Category = Category;
+            Product.Info = product.Info;
+            Product.Image = product.Image;
+
+            await database.SaveChangesAsync();
+
+            return RedirectToPage("./Details", new { id = Product.Id });
         }
     }
 }
