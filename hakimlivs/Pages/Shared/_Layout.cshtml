@@ -12,11 +12,13 @@
         <a class="hakim-title" asp-area="" asp-page="/Index">hakimlivs</a>
         <form method="post" class="searchbox" asp-page-handler="search">
             <input type="search" name="SearchTerm" id="SearchTerm" placeholder="Sök efter en vara..."/>
-            <button type="submit">Sök</button>
+            <button type="submit" class="search-button">Sök</button>
         </form>
         @if (User.IsInRole("Basic"))
         {
-            <a asp-area="" asp-page="/UserCart/Index">Till din varukorg</a>
+            <button type="submit" class="go-to-cart">
+                <a asp-area="" asp-page="/UserCart/Index">Till din varukorg</a>
+            </button>
         }
     </header>
 

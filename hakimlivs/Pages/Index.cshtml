@@ -5,7 +5,7 @@
     ViewData["Title"] = "Home page";
 }
 
-<div>
+<div class="main-menu-div">
     @if (User.IsInRole("Admin"))
     {
         <section class="main-menu">
@@ -40,7 +40,8 @@
             {
                 <div class="menu-button">
                     <form method="get">
-                        <button type="submit" name="Filter" id="Filter" value="@category.Name">@category.Name</button>
+                        <button type="submit" name="Filter" id="Filter"
+                            value="@category.Name">@category.Name</button>
                     </form>
                 </div>
             }
@@ -102,7 +103,7 @@
                     </p>
                 </div>
                 <div class="product-item-footer">
-                    <p class="product-price">
+                    <p class="product-price"  style="width: 100%;">
                         @item.Price kr
                     </p>
                 </div>
