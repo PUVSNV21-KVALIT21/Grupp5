@@ -25,16 +25,13 @@ namespace hakimlivs.Pages.Invoices
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null)
+            if (!User.IsInRole("Admin"))
             {
-                return NotFound();
+                return Forbid();
             }
-
-            Invoice = await _context.Invoices.FirstOrDefaultAsync(m => m.Id == id);
-
-            if (Invoice == null)
+            else
             {
-                return NotFound();
+                Invoice = await _context.Invoices.FindAsync(id);
             }
             return Page();
         }
@@ -43,27 +40,31 @@ namespace hakimlivs.Pages.Invoices
         // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            if (User.IsInRole("Admin"))
             {
-                return Page();
-            }
-
-            _context.Attach(Invoice).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!InvoiceExists(Invoice.Id))
+                if (!ModelState.IsValid)
                 {
-                    return NotFound();
+                    return Page();
                 }
-                else
+
+                _context.Attach(Invoice).State = EntityState.Modified;
+
+                try
                 {
-                    throw;
+                    await _context.SaveChangesAsync();
                 }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!InvoiceExists(Invoice.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+
             }
 
             return RedirectToPage("./Index");

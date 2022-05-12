@@ -12,27 +12,32 @@
           <div class="cart-item">
             <img src=@details.Product.Image>
             <div class="cart-item-info">
-                <p>@details.Product.Name</p>
-                <p>@details.Product.Price</p>
-                <p>@details.Product.Category</p>
-                <p>@details.Amount</p>
-                int amount = @details.Amount;
-                decimal price = @details.Product.Price;
-                decimal sum = amount * price;
-                <p>Total: @sum</p>
+                <h4>@details.Product.Name</h4>
+                <p>Pris per st: @details.Product.Price</p>
+                <p>Kategori: @details.Product.Category</p>
+                <p>Antal: @details.Amount</p>
+                @{
+                    int amount = @details.Amount;
+                    decimal price = @details.Product.Price;
+                    decimal sum = amount * price;
+                }
+                <p>Summa: @sum</p>
             </div>
           </div>
         }
 
-        @if (Model.Index! < 0)
+        @if (User.IsInRole("Admin"))
         {
-            <form method="post">
-                <button type="submit" asp-route-id=@Model.Order.Id>Skriv ut</button>
-            </form>
-        }
-        else
-        {
-            <h3>Ordern är redan en faktura</h3>
+            @if (Model.Index! < 0)
+            {
+                <form method="post">
+                    <button type="submit" asp-route-id=@Model.Order.Id>Skriv ut</button>
+                </form>
+            }
+            else
+            {
+                <h3>Ordern är redan en faktura</h3>
+            }
         }
     </div>
 </div>
