@@ -4,45 +4,27 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Index</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Invoice[0].OrderId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Invoice[0].UserId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Invoice[0].PrintDate)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Invoice) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PrintDate)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="area-page">
+    <h3 style="margin-left: 20px;">Fakturor</h3>
+    @foreach (var item in Model.Invoice)
+    {
+        <div class="row">
+            @if (User.IsInRole("Admin"))
+            {
+                <p>Order: @item.OrderId</p>
+                <p>KundId: @item.UserId</p>
+                <p>Datum: @item.PrintDate.ToString("yyyy/MM/dd")</p>
+                <button type="submit" class="role-link-button">
+                    <a asp-page="./Details" asp-route-id="@item.Id">
+                        Detaljer
+                    </a>
+                </button>
+                <button type="submit" class="role-link-button">
+                    <a asp-page="./Delete" asp-route-id="@item.Id">
+                        Ta bort
+                    </a>
+                </button>
+            }
+        </div>
+    }
+</div>
