@@ -1,22 +1,38 @@
-﻿@page "{id:int}"
+@page "{id:int}"
 @model hakimlivs.Pages.Orders.DetailsModel
+@inject ApplicationDbContext database
 @{
 }
 
 <div class="cart-page">
     <div class="cart-details">
-        <h3>Info om din order #"{id:int}"</h3>
+      <h3>Orderinformation</h3>
         @foreach (var details in Model.OrderDetails)
         {
-            <div class="cart-item">
-                <img src=@details.Product.Image >
-                <div class="cart-item-info">
-                    <h4>@details.Product.Name</h4>
-                    <p>Pris st: @details.Product.Price kr</p>
-                    <p>Antal: @details.Amount</p>
-                    <p>Totalt: summa</p>
-                </div>
+          <div class="cart-item">
+            <img src=@details.Product.Image>
+            <div class="cart-item-info">
+                <p>@details.Product.Name</p>
+                <p>@details.Product.Price</p>
+                <p>@details.Product.Category</p>
+                <p>@details.Amount</p>
+                int amount = @details.Amount;
+                decimal price = @details.Product.Price;
+                decimal sum = amount * price;
+                <p>Total: @sum</p>
             </div>
+          </div>
+        }
+
+        @if (Model.Index! < 0)
+        {
+            <form method="post">
+                <button type="submit" asp-route-id=@Model.Order.Id>Skriv ut</button>
+            </form>
+        }
+        else
+        {
+            <h3>Ordern är redan en faktura</h3>
         }
     </div>
 </div>
