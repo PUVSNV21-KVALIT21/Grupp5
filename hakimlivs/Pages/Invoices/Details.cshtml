@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{id:int}"
 @model hakimlivs.Pages.Invoices.DetailsModel
 
 @{
@@ -33,11 +33,17 @@
             <h4>OCR:</h4> <p>@Model.User.Id</p>
             <h4>Fakturadatum:</h4> <p>@Model.Invoice.PrintDate.ToString("yyyy/MM/dd")</p>
             <h4>Förfallodatum:</h4> <p>@Model.Invoice.PrintDate.AddDays(30).ToString("yyyy/MM/dd")</p>
+            <button type="submit" class="role-link-button">
+                <a asp-page="./Delete" asp-route-id="@Model.Invoice.Id">
+                    Ta bort
+                </a>
+            </button>
+            <div>
+                <a class="role-link" asp-page="./Index">Back to List</a>
+            </div>
         </div>
 
-        <div style="margin-left: 20px;">
-            <a class="role-link" asp-page="./Index">Back to List</a>
-        </div>
+
     </div>
 </div>
 
