@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace hakimlivs.Migrations
 {
-    public partial class First : Migration
+    public partial class test : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -22,6 +22,22 @@ namespace hakimlivs.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categories", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Invoice",
+                schema: "Identity",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OrderId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PrintDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Invoice", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -409,6 +425,10 @@ namespace hakimlivs.Migrations
         {
             migrationBuilder.DropTable(
                 name: "CartItem",
+                schema: "Identity");
+
+            migrationBuilder.DropTable(
+                name: "Invoice",
                 schema: "Identity");
 
             migrationBuilder.DropTable(
