@@ -6,40 +6,40 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Manage User Roles</h1>
-Add/Remove Roles for user @User.Identity.Name
-
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div class="card-body">
-            @for (int i = 0; i < Model.ManageUserRolesViewModels.Count; i++)
-            {
-                <div class="form-check m-1">
-                    <input type="hidden" asp-for="@Model.ManageUserRolesViewModels[i].RoleId" />
-                    <input type="hidden" asp-for="@Model.ManageUserRolesViewModels[i].RoleName" />
-                    <input asp-for="@Model.ManageUserRolesViewModels[i].Selected" class="form-check-input" />
-                    <label class="form-check-label" asp-for="@Model.ManageUserRolesViewModels[i].Selected">
-                        @Model.ManageUserRolesViewModels[i].RoleName
-                    </label>
-                </div>
-            }
-            <div asp-validation-summary="All" class="text-danger"></div>
+<div class="area-page">
+    <div class="row">
+        <h4>Ändra eller ta bort roller för användare: </h4> @User.Identity.Name
+        <hr />
+        <div class="col-md-4">
+            <form method="post">
+                <div class="card-body">
+                @for (int i = 0; i < Model.ManageUserRolesViewModels.Count; i++)
+                {
+                    <div class="form-check m-1">
+                        <input type="hidden" asp-for="@Model.ManageUserRolesViewModels[i].RoleId" />
+                        <input type="hidden" asp-for="@Model.ManageUserRolesViewModels[i].RoleName" />
+                        <input asp-for="@Model.ManageUserRolesViewModels[i].Selected" class="form-check-input" />
+                        <label class="form-check-label" asp-for="@Model.ManageUserRolesViewModels[i].Selected">
+                            @Model.ManageUserRolesViewModels[i].RoleName
+                        </label>
+                    </div>
+                }
+                <div asp-validation-summary="All" class="text-danger"></div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="role-link-button">Uppdatera</button>
+                <button type="submit" class="role-link-button">
+                    <a asp-action="EditUser" asp-route-id="@ViewBag.userId">Avbryt</a>
+                </button>
+            </div>
+            </form>
         </div>
-        <div class="card-footer">
-            <input type="submit" value="Update" class="btn btn-primary"
-                   style="width:auto" />
-            <a asp-action="EditUser" asp-route-id="@ViewBag.userId"
-               class="btn btn-primary" style="width:auto">Cancel</a>
+        <div>
+            <a class="role-link" asp-page="./Index">Back to List</a>
         </div>
-        </form>
     </div>
 </div>
 
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

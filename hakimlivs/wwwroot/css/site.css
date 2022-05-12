@@ -15,6 +15,10 @@ h3 {
     margin: 20px;
 }
 
+h4 {
+    color: #72b4b6;
+}
+
 a {
     color: inherit;
     text-decoration: none;
@@ -63,12 +67,29 @@ input[type="search"]::placeholder {
 }
 
 button[type="submit"] {
-    width: 60px;
     background: none;
     border: none;
     cursor: pointer;
     background-color: cadetblue;
     color: white;
+}
+
+.search-button {
+    width: 80px;
+}
+
+button[type="submit"].cart-button {
+    width: 25px;
+    height: 25px;
+}
+
+button[type="submit"].cart-button-delete {
+    width: 25px;
+    height: 25px;
+}
+
+button[type="submit"].cart-button-delete:hover {
+    background-color: red;
 }
 
 button[type="submit"]:hover {
@@ -87,10 +108,12 @@ input[type="search"]:focus {
     display: flex;
     flex-direction: column;
     position: fixed;
-    bottom: 80px;
+    bottom: 0px;
     left: 0px;
-    padding-top: 40px;
+    padding-top: 60px;
+    padding-bottom: 60px;
     border-top: 1px solid cadetblue;
+    background-color: white;
 }
 
 .login-card {
@@ -111,6 +134,10 @@ button[type="submit"].role-link-button {
     padding: 10px;
     width: 100px;
     margin-top: 20px;
+}
+
+.go-to-cart {
+    width: 200px;
 }
 
 .cart {
@@ -134,20 +161,46 @@ button[type="submit"].role-link-button {
     background-color: #72b4b6;
 }
 
+.main-menu-div {
+    border-right: 1px solid #e8e8e8;
+}
+
 .main-menu {
     text-align: center;
-    border-right: 1px solid #e8e8e8;
 }
 
 .menu-button {
     padding: 20px;
     width: 200px;
     border-style: none;
+    font-size: 18px;
+}
+
+button#Filter {
+    background-color: transparent;
+    color: black;
+}
+
+button#Filter:hover {
+    color: white;
+}
+
+button#Id {
+    background-color: transparent;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
     font-size: 16px;
+    color: #72b4b6;
+}
+
+button#Id:hover {
+    background-color: #72b4b6;
+    color: white;
 }
 
 .menu-button:hover {
-    background-color: cadetblue;
+    background-color: #72b4b6;
     color: white;
     border-left: 4px solid red;
 }
@@ -221,23 +274,7 @@ p.product-price {
 }
 
 .add-to-cart {
-    text-align: center;
     width: 100%;
-    padding: 10px;
-    font-size: 18px;
-    color: #72b4b6;
-}
-
-.add-to-cart:hover {
-    background-color: cadetblue;
-    color: white;
-}
-
-ul {
-}
-
-li {
-    list-style: none;
 }
 
 footer {
@@ -249,10 +286,19 @@ footer {
     margin-left: 200px;
 }
 
+.area-page {
+    margin-left: 180px;
+}
+
 .row {
-    margin-top: 20px;
-    margin-left: 20px;
+    margin: 20px;
     line-height: 20px;
+}
+
+.col-md-6 {
+    border-top: 1px solid cadetblue;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .table {
@@ -285,6 +331,72 @@ footer {
     color: white;
 }
 
+.cart-page {
+    margin-left: 180px;
+    display: flex;
+    flex-direction: row;
+}
+
 .cart-details {
     display: flex;
+    flex-direction: column;
+}
+
+.cart-item {
+    display: flex;
+    flex-direction: row;
+    border-left: 2px solid cadetblue;
+    margin: 20px;
+    padding: 20px;
+}
+
+.cart-item img {
+    width: 100px;
+    margin-right: 20px;
+}
+
+.cart-item-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-item-info h4 {
+    margin-bottom: 20px;
+}
+
+.cart-manager {
+    display: flex;
+    flex-direction: row;
+}
+
+.cart-manager p {
+    margin-right: 20px;
+    padding: 4px;
+}
+
+.order-div {
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.total-sum-div {
+    padding: 22px;
+}
+
+ul {
+}
+
+li {
+    list-style: none;
+}
+
+.table {
+    margin: 0px;
+    padding: 0px;
+}
+
+td, th {
+    padding: 10px;
+    text-align: left;
 }
