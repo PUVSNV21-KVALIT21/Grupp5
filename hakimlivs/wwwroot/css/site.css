@@ -289,6 +289,7 @@ footer {
     padding: 50px;
     color: white;
     margin-left: 200px;
+    margin-top: 300px;
 }
 
 .area-page {
@@ -387,6 +388,20 @@ footer {
 
 .total-sum-div {
     padding: 22px;
+}
+
+.faktura-kund-info {
+    margin: 20px;
+    border-bottom: 1px solid cadetblue;
+}
+
+.faktura-kund-items {
+    margin: 20px;
+    border-bottom: 1px solid cadetblue;
+}
+
+.faktura-footer {
+    margin-left: 20px;
 }
 
 ul {
