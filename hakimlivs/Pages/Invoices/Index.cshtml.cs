@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using hakimlivs.Data;
 using hakimlivs.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace hakimlivs.Pages.Invoices
 {
@@ -21,9 +23,17 @@ namespace hakimlivs.Pages.Invoices
 
         public IList<Invoice> Invoice { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task<IActionResult> OnGetAsync()
         {
-            Invoice = await _context.Invoices.ToListAsync();
+            if (!User.IsInRole("Admin"))
+            {
+                return Forbid();
+            }
+            else
+            {
+                Invoice = await _context.Invoices.ToListAsync();
+            }
+            return Page();
         }
     }
 }
