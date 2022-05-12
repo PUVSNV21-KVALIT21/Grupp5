@@ -209,6 +209,27 @@ namespace hakimlivs.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("hakimlivs.Models.Invoice", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("PrintDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Invoice");
+                });
+
             modelBuilder.Entity("hakimlivs.Models.Order", b =>
                 {
                     b.Property<int>("Id")

@@ -10,8 +10,8 @@ using hakimlivs.Data;
 namespace hakimlivs.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220510113457_First")]
-    partial class First
+    [Migration("20220511121101_test")]
+    partial class test
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -209,6 +209,27 @@ namespace hakimlivs.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("hakimlivs.Models.Invoice", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("PrintDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Invoice");
                 });
 
             modelBuilder.Entity("hakimlivs.Models.Order", b =>
