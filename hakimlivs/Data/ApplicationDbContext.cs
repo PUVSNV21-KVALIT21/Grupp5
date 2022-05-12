@@ -14,6 +14,7 @@ namespace hakimlivs.Data
             : base(options)
         {
         }
+        public DbSet<Invoice> Invoices { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
@@ -60,6 +61,7 @@ namespace hakimlivs.Data
             modelBuilder.Entity<OrderDetails>().ToTable("OrderDetails");
             modelBuilder.Entity<Cart>().ToTable("Cart");
             modelBuilder.Entity<CartItem>().ToTable("CartItem");
+            modelBuilder.Entity<Invoice>().ToTable("Invoice");
         }
     }
 }

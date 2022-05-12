@@ -5,26 +5,53 @@
     ViewData["Title"] = "Home page";
 }
 
-<div>
+<div class="main-menu-div">
     @if (User.IsInRole("Admin"))
     {
         <section class="main-menu">
             <h3>Adminpanel</h3>
-            <div class="menu-button">
-                <a asp-area="" asp-page="/Products/Create">Lägg till produkter</a>
-            </div>
-            <div class="menu-button">
-                <a asp-area="" asp-page="/Products/Index">Ändra produkter</a>
-            </div>
-            <div class="menu-button">
-                <a asp-area="" asp-page="/Orders/Index">Ordrar</a>
-            </div>
-            <div class="menu-button">
-                <a asp-area="" asp-page="/Admin/RoleManager/Index">Lägg till roller</a>
-            </div>
-            <div class="menu-button">
-                <a asp-area="" asp-page="/Admin/UserRoles/Index">Rollhantering</a>
-            </div>
+            <a asp-area="" asp-page="/Products/Create">
+                <div class="menu-button">
+                    <button type="submit" id="Filter">
+                        Lägg till produkter
+                    </button>
+                </div>
+            </a>
+            <a asp-area="" asp-page="/Products/Index">
+                <div class="menu-button">
+                    <button type="submit" id="Filter">
+                        Ändra produkter
+                    </button>
+                </div>
+            </a>
+            <a asp-area="" asp-page="/Orders/Index">
+                <div class="menu-button">
+                    <button type="submit" id="Filter">
+                        Ordrar
+                    </button>
+                </div>
+            </a>
+            <a asp-area="" asp-page="/Invoices/Index">
+                <div class="menu-button">
+                    <button type="submit" id="Filter">
+                        Fakturor
+                    </button>
+                </div>
+            </a>
+            <a asp-area="" asp-page="/Admin/RoleManager/Index">
+                <div class="menu-button">
+                    <button type="submit" id="Filter">
+                        Lägg till roller
+                    </button>
+                </div>
+            </a>
+            <a asp-area="" asp-page="/Admin/UserRoles/Index">
+                <div class="menu-button">
+                    <button type="submit" id="Filter">
+                        Rollhantering
+                    </button>
+                </div>
+            </a>
             <div class="login-area">
                 <div class="login-card">
                     <partial name="_LoginPartial" />
@@ -40,7 +67,8 @@
             {
                 <div class="menu-button">
                     <form method="get">
-                        <button type="submit" name="Filter" id="Filter" value="@category.Name">@category.Name</button>
+                        <button type="submit" name="Filter" id="Filter"
+                            value="@category.Name">@category.Name</button>
                     </form>
                 </div>
             }
@@ -102,7 +130,7 @@
                     </p>
                 </div>
                 <div class="product-item-footer">
-                    <p class="product-price">
+                    <p class="product-price"  style="width: 100%;">
                         @item.Price kr
                     </p>
                 </div>

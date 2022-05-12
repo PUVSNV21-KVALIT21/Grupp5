@@ -3,15 +3,20 @@
 @{
 }
 
-<main>
-    @foreach (var order in Model.Order)
-    {
-        @if(User.IsInRole("Admin"))
+<div class="area-page">
+        <h3 style="margin-left: 20px;">Orderz</h3>
+        @foreach (var order in Model.Order)
         {
-            <p>@order.User.Email</p>
+            <div class="row">
+                @if(User.IsInRole("Admin"))
+                {
+                    <p>Kund: @order.User.Email</p>
+                }
+                <p>Order id: @order.Id</p>
+                <p>Datum: @order.Date</p>
+                <button type="submit" class="role-link-button">
+                    <a asp-page="./Details" asp-route-id="@order.Id">Se orderinfo</a>
+                </button>
+            </div>
         }
-        <p>@order.Id</p>
-        <p>@order.Date</p>
-        <a asp-page="./Details" asp-route-id="@order.Id">Se orderinfo</a>
-    }
-</main>
+</div>

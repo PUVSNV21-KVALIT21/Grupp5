@@ -3,34 +3,43 @@
 @{
 }
 
-
-<main class="cart-details">
-    @foreach (var details in Model.CartItems)
-    {
-        <div>
+<div class="cart-page">
+    <div class="cart-details">
+        @foreach (var details in Model.CartItems)
+        {
+        <div class="cart-item">
             <img src=@details.Product.Image />
-            <p>@details.Product.Name</p>
-            <p>@details.Amount</p>
-            <form method="post" asp-page-handler="plus" asp-route-id="@details.Id" style="display: inline">
-                <button type="submit">+</button>
-            </form>
-            <form method="post" asp-page-handler="minus" asp-route-id="@details.Id" style="display: inline">
-                <button type="submit">-</button>
-            </form>
-            <form method="post" asp-page-handler="delete" asp-route-id="@details.Id" style="display: inline">
-                <button type="submit">x</button>
-            </form>
+            <div class="cart-item-info">
+                <h4>@details.Product.Name</h4>
+                <div class="cart-manager">
+                    <p>Antal: @details.Amount</p>
+                    <form method="post" asp-page-handler="plus" asp-route-id="@details.Id">
+                    <button type="submit" class="cart-button">+</button>
+                    </form>
+                    <form method="post" asp-page-handler="minus" asp-route-id="@details.Id">
+                        <button type="submit" class="cart-button">-</button>
+                    </form>
+                    <form method="post" asp-page-handler="delete" asp-route-id="@details.Id">
+                        <button type="submit" class="cart-button-delete">x</button>
+                    </form>
+                </div>
+            </div>
         </div>
-    }
+        }
+    </div>
     @if (Model.CartItems.Count() == 0)
-    {
+        {
 
-    }
-    else
-    {
-        <form method="post">
-            <button>Order</button>
-        </form>
-        <label>@Model.Sum</label>
-    }
-</main>
+        }
+        else
+        {
+            <div class="order-div">
+                <div class="total-sum-div">
+                    <h4>Summa totalt: </h4>@Model.Sum kr
+                </div>
+                <form method="post">
+                    <button type="submit" class="role-link-button">Beställ</button>
+                </form>
+            </div>
+        }
+</div>
