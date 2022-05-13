@@ -38,6 +38,9 @@
                     Ta bort
                 </a>
             </button>
+            <form method="post" asp-route-id=@Model.Invoice.Id>
+                <button class="role-link-button" type="submit" name="print">Spara PDF</button>
+            </form>
             <div>
                 <a class="role-link" asp-page="./Index">Back to List</a>
             </div>
