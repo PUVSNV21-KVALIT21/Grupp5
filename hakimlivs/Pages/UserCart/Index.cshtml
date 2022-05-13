@@ -5,51 +5,41 @@
 
 <div class="cart-page">
     <div class="cart-details">
-        @if (Model.CartItems.Count() == 0)
+        @foreach (var details in Model.CartItems)
         {
-            <p>Varukorgen är tom.</p>
-        }
-        else
-        {
-            @foreach (var details in Model.CartItems)
-            {
-                <div class="cart-item">
-                    <img src=@details.Product.Image />
-                    <div class="cart-item-info">
-                        <h4>@details.Product.Name</h4>
-                        <div class="cart-manager">
-                            <p>Antal: @details.Amount</p>
-                            <form method="post" asp-page-handler="plus" asp-route-id="@details.Id">
-                                <button type="submit" class="cart-button">+</button>
-                            </form>
-                            <form method="post" asp-page-handler="minus" asp-route-id="@details.Id">
-                                <button type="submit" class="cart-button">-</button>
-                            </form>
-                            <form method="post" asp-page-handler="delete" asp-route-id="@details.Id">
-                                <button type="submit" class="cart-button-delete">x</button>
-                            </form>
-                        </div>
-                    </div>
+        <div class="cart-item">
+            <img src=@details.Product.Image />
+            <div class="cart-item-info">
+                <h4>@details.Product.Name</h4>
+                <div class="cart-manager">
+                    <p>Antal: @details.Amount</p>
+                    <form method="post" asp-page-handler="plus" asp-route-id="@details.Id">
+                    <button type="submit" class="cart-button">+</button>
+                    </form>
+                    <form method="post" asp-page-handler="minus" asp-route-id="@details.Id">
+                        <button type="submit" class="cart-button">-</button>
+                    </form>
+                    <form method="post" asp-page-handler="delete" asp-route-id="@details.Id">
+                        <button type="submit" class="cart-button-delete">x</button>
+                    </form>
                 </div>
-            }
+            </div>
+        </div>
         }
     </div>
     @if (Model.CartItems.Count() == 0)
-    {
+        {
 
-    }
-    else
-    {
-        <div class="order-div">
-            <div class="total-sum-div">
-                <h4>Summa totalt: </h4>@Model.Sum kr
+        }
+        else
+        {
+            <div class="order-div">
+                <div class="total-sum-div">
+                    <h4>Summa totalt: </h4>@Model.Sum kr
+                </div>
+                <form method="post">
+                    <button type="submit" class="role-link-button">Beställ</button>
+                </form>
             </div>
-            <form method="post">
-                <button type="submit" class="role-link-button" onclick="orderPlaced()">Beställ</button>
-            </form>
-            <form method="post" asp-page-handler="clear" asp-route-id="@User.Identity.Name">
-                <button type="submit" class="role-link-button" onclick="clearCart()">Rensa varukorg</button>
-            </form>
-        </div>
-    }
+        }
 </div>
