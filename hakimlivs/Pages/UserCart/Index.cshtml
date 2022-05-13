@@ -17,6 +17,7 @@
                     <h4>@details.Product.Name</h4>
                     <div class="cart-manager">
                         <p>Antal: @details.Amount</p>
+                        <p>&#64;: @details.Product.Price kr</p>
                         <form method="post" asp-page-handler="plus" asp-route-id="@details.Id">
                             <button type="submit" class="cart-button">+</button>
                         </form>
@@ -45,7 +46,7 @@
                 <button type="submit" class="role-link-button" onclick="placeOrder()">Beställ</button>
             </form>
             <form method="post" asp-page-handler="clear" asp-route-id="@User.Identity.Name">
-                <button type="submit" class="role-link-button" onclick="clearCart()">Rensa varukorg</button>
+                <button type="submit" class="role-link-button" id="delete" onclick="clearCart()">Rensa</button>
             </form>
         </div>
     }
