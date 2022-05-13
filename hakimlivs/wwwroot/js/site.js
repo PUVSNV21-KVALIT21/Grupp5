@@ -8,3 +8,7 @@ function placeOrder() {
 function clearCart() {
     alert("Varukorgen är nu tom.")
 }
+
+function addProduct() {
+    alert("Produkt tillagd.")
+}

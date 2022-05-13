@@ -25,16 +25,24 @@ namespace hakimlivs.Pages.Orders
         }
 
         public List<Order> Order { get; set; }
-        public async Task<IActionResult> OnGetAsync()
+        public async Task<IActionResult> OnGetAsync(string? id)
         {
             if (accessControl.LoggedInUserID == null)
             {
                 return NotFound();
             }
 
+
             if (User.IsInRole("Admin"))
             {
-                Order = await database.Orders.OrderBy(o => o.Date).Include(o => o.User).ToListAsync();
+                if (id != null)
+                {
+                    Order = await database.Orders.Where(o => o.UserId == id).OrderBy(o => o.Date).Include(o => o.User).ToListAsync();
+                }
+                else
+                {
+                    Order = await database.Orders.OrderBy(o => o.Date).Include(o => o.User).ToListAsync();
+                }
             }
             else
             {
