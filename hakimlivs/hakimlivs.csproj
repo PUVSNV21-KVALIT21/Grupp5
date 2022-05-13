@@ -13,6 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="ceTe.DynamicPDF.Converter.NET" Version="3.14.0" />
+    <PackageReference Include="ceTe.DynamicPDF.CoreSuite.NET" Version="11.30.0" />
+    <PackageReference Include="ceTe.DynamicPDF.HtmlConverter.NET" Version="1.7.0" />
     <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.3" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.16" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.16" />
