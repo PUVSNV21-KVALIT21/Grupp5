@@ -1,5 +1,6 @@
 using hakimlivs.Data;
 using hakimlivs.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -14,10 +15,12 @@ namespace hakimlivs.Pages.UserCart
     {
         private readonly ApplicationDbContext database;
         private readonly AccessControl accessControl;
-        public IndexModel(ApplicationDbContext database, AccessControl accessControl)
+        private readonly UserManager<User> _userManager;
+        public IndexModel(ApplicationDbContext database, AccessControl accessControl, UserManager<User> userManager)
         {
             this.database = database;
             this.accessControl = accessControl;
+            this._userManager = userManager;
         }
         [BindProperty]
         public decimal Sum { get; set; }
@@ -119,6 +122,15 @@ namespace hakimlivs.Pages.UserCart
 
 
             database.CartItems.Remove(cartItem);
+            await database.SaveChangesAsync();
+            return RedirectToPage();
+        }
+        public async Task<IActionResult> OnPostClear(User user)
+        {
+            var currentUser = await _userManager.Users.Where(u => u.UserName == user.Id).FirstOrDefaultAsync();
+            var cart = await database.CartItems.Where(c => c.Cart.User == currentUser).ToListAsync();
+
+            database.CartItems.RemoveRange(cart);
             await database.SaveChangesAsync();
             return RedirectToPage();
         }

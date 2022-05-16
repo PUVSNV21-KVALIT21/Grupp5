@@ -8,7 +8,7 @@
 
 <div class="area-page">
     <div class="row">
-        <h4>Roller för användare</h4>
+        <h4>Kunder</h4>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -28,7 +28,10 @@
                         <td>@user.Email</td>
                         <td>@string.Join(" , ", user.Roles.ToList())</td>
                         <td>
-                            <a class="role-link" asp-page="/Admin/UserRoles/Manage" asp-route-userId="@user.UserId">Ändra roller</a>
+                            <a class="role-link" asp-page="/Admin/UserRoles/Manage" asp-route-userId="@user.UserId">Ändra roller</a> |
+                        </td>
+                        <td>
+                            <a class="role-link" asp-page="/Orders/Index" asp-route-id="@user.UserId">Ordrar</a>
                         </td>
                     </tr>
                 }

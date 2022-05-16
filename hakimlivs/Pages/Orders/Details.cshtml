@@ -7,6 +7,9 @@
 <div class="cart-page">
     <div class="cart-details">
       <h3>Orderinformation</h3>
+      @{
+          decimal totalSum = 0;
+      }
         @foreach (var details in Model.OrderDetails)
         {
           <div class="cart-item">
@@ -20,18 +23,20 @@
                     int amount = @details.Amount;
                     decimal price = @details.Product.Price;
                     decimal sum = amount * price;
+                    totalSum+= sum;
                 }
                 <p>Summa: @sum</p>
             </div>
           </div>
         }
+        <p>Totalt: @totalSum</p>
 
         @if (User.IsInRole("Admin"))
         {
             @if (Model.Index! < 0)
             {
                 <form method="post">
-                    <button type="submit" asp-route-id=@Model.Order.Id>Skriv ut</button>
+                    <button type="submit" style="margin-left: 20px;" class="role-link-button" asp-route-id=@Model.Order.Id>Skriv ut</button>
                 </form>
             }
             else

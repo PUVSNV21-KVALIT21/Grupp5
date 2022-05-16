@@ -48,7 +48,7 @@
             <a asp-area="" asp-page="/Admin/UserRoles/Index">
                 <div class="menu-button">
                     <button type="submit" id="Filter">
-                        Rollhantering
+                        Kunder
                     </button>
                 </div>
             </a>
@@ -103,8 +103,8 @@
                         @item.Price kr
                     </p>
                     <div class="add-to-cart">
-                        <form method="post" asp-page-handler="add" onclick=showMessage(@item.Name)>
-                            <button type="submit" name="Id" id="Id" value="@item.Id">
+                        <form method="post" asp-page-handler="add">
+                            <button type="submit" name="Id" id="Id" value="@item.Id" onclick="addProduct()">
                                 Lägg till
                             </button>
                         </form>
