@@ -94,6 +94,17 @@ button[type="submit"].cart-button-delete {
     padding: 5px;
 }
 
+button[type="submit"].cart-button-remove {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    padding: 5px;
+}
+
+button[type="submit"].cart-button-remove:hover {
+    background-color: cadetblue;
+}
+
 button[type="submit"].cart-button-delete:hover {
     background-color: red;
 }
