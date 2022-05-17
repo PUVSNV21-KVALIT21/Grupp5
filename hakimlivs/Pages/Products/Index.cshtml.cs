@@ -89,7 +89,10 @@ namespace hakimlivs.Pages.Products
             }
             else
             {
-                var cartItemQuery = await database.CartItems.Where(c => c.Product == AddCartProduct).FirstOrDefaultAsync();
+                var cartItemQuery = await database.CartItems
+                    .Where(c => c.Product == AddCartProduct)
+                    .Where(c => c.Cart.UserId == accessControl.LoggedInUserID)
+                    .FirstOrDefaultAsync();
 
                 if (cartItemQuery == null)
                 {
