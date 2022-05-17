@@ -128,9 +128,11 @@ namespace hakimlivs.Pages.UserCart
         public async Task<IActionResult> OnPostClear(User user)
         {
             var currentUser = await _userManager.Users.Where(u => u.UserName == user.Id).FirstOrDefaultAsync();
-            var cart = await database.CartItems.Where(c => c.Cart.User == currentUser).ToListAsync();
+            var cartItems = await database.CartItems.Where(c => c.Cart.User == currentUser).ToListAsync();
+            var cart = await database.Carts.Where(c => c.User == currentUser).FirstOrDefaultAsync();
 
-            database.CartItems.RemoveRange(cart);
+            database.CartItems.RemoveRange(cartItems);
+            database.Carts.Remove(cart);
             await database.SaveChangesAsync();
             return RedirectToPage();
         }
