@@ -61,17 +61,25 @@
     }
     else
     {
+        
         <section class="main-menu">
-            <h3>Kategorier</h3>
-            @foreach (var category in database.Categories)
-            {
-                <div class="menu-button">
-                    <form method="get">
-                        <button type="submit" name="Filter" id="Filter"
-                            value="@category.Name">@category.Name</button>
-                    </form>
-                </div>
-            }
+            <div id="Hamburger">
+                <h3>Kategorier</h3>
+                @foreach (var category in database.Categories)
+                {
+                    <div class="menu-button">
+                        <form method="get">
+                            <button type="submit" name="Filter" id="Filter"
+                                value="@category.Name">@category.Name</button>
+                        </form>
+                    </div>
+
+                }
+                      
+            </div>
+             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                       <i class="fa-solid fa-bars"></i>
+                       </a>
             <div class="login-area">
                 <div class="login-card">
                     <partial name="_LoginPartial" />

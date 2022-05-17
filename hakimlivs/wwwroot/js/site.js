@@ -12,3 +12,13 @@ function clearCart() {
 function addProduct() {
     alert("Produkt tillagd.")
 }
+
+function myFunction() {
+    var x = document.getElementById("Hamburger");
+    if (x.style.display === "none") {
+        x.style.display = "flex";
+        x.style.flexFlow = "flex-direction flex-wrap";
+    } else {
+        x.style.display = "none";
+    }
+}

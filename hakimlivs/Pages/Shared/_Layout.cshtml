@@ -1,4 +1,5 @@
 ﻿    @using hakimlivs.Models
+    @inject ApplicationDbContext database
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +8,7 @@
     <title>@ViewData["Title"] - Hakim Livs</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <script src="~/js/site.js" defer></script>
+    <script src="https://kit.fontawesome.com/8c6cf5ad63.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
@@ -21,6 +23,34 @@
                 <a asp-area="" asp-page="/UserCart/Index">Till din varukorg</a>
             </button>
         }
+
+         <div class="main-menu-mobile">
+             <h3>Kategorier</h3>
+            <div id="Hamburger">
+                
+                <div class="mobile-category">
+                @foreach (var category in database.Categories)
+                    {
+                        <div class="menu-button">
+                            <form method="get">
+                                <button type="submit" name="Filter" id="Filter"
+                                    value="@category.Name">@category.Name</button>
+                            </form>
+                        </div>
+
+                    }
+                </div>
+            </div>
+             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa-solid fa-bars"></i>
+            </a>
+            </div>
+@*
+            <div class="login-area-mobile">
+                <div class="login-card">
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>*@
     </header>
 
         <main class="content">
