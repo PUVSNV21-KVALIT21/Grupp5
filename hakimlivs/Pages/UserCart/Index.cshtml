@@ -17,12 +17,25 @@
                     <h4>@details.Product.Name</h4>
                     <div class="cart-manager">
                         <p>Antal: @details.Amount</p>
-                        <p>&#64;: @details.Product.Price kr</p>
+                        <p>@details.Product.Price kr/st</p>
+                        @{
+                            decimal productSum = @details.Amount * @details.Product.Price;
+                        }
+                        <p>Totalt: @productSum</p>
+                        @if (details.Amount <= 1)
+                        {
+                            <form method="post" asp-page-handler="minus" asp-route-id="@details.Id">
+                                <button type="submit" class="cart-button-remove" style="opacity:0.6; cursor:context-menu;" disabled>-</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <form method="post" asp-page-handler="minus" asp-route-id="@details.Id">
+                                <button type="submit" class="cart-button">-</button>
+                            </form>
+                        }
                         <form method="post" asp-page-handler="plus" asp-route-id="@details.Id">
                             <button type="submit" class="cart-button">+</button>
-                        </form>
-                        <form method="post" asp-page-handler="minus" asp-route-id="@details.Id">
-                            <button type="submit" class="cart-button">-</button>
                         </form>
                         <form method="post" asp-page-handler="delete" asp-route-id="@details.Id">
                             <button type="submit" class="cart-button-delete">x</button>
