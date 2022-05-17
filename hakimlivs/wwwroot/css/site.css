@@ -41,7 +41,6 @@ header {
 .hakim-title {
     font-size: 30px;
     color: red;
-    text-transform: uppercase;
     margin-right: 10px;
 }
 
@@ -433,4 +432,80 @@ li {
 td, th {
     padding: 10px;
     text-align: left;
+}
+
+.main-menu-mobile{
+    display: none;
+}
+
+.login-area-mobile{
+    display: none;
+}
+
+@media (max-width: 600px) {
+
+    header {
+        flex-wrap: wrap;
+    }
+
+    .login-area-mobile{
+        display:block;
+    }
+
+    #Hamburger{   
+        display: none;
+        flex-wrap:wrap;
+        position: relative;
+    }
+
+    .product-div {
+        padding-top: 100px;
+    }
+
+    .main-menu{
+        display: none;
+    }
+
+    .main-menu-mobile{
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    .mobile-category{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .login-area{
+        display: none;
+    }
+    .icon{
+        position: absolute;
+    }
+
+
+    .menu-button{
+        width: 70px;
+        height: 30px;
+        margin: 30px 0px;
+    }
+
+    .cart-details {
+        padding-top: 100px;
+        
+    }
+    .cart-page {
+        margin-left: 0px;
+        display:block;
+    }
+
+    .order-div{
+        left: 0px;
+        top:125px;
+    }
+
+    .row{
+        margin-top: 100px;
+        margin-left: 0px;
+    }
 }
