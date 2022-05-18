@@ -453,6 +453,10 @@ td, th {
     display: none;
 }
 
+.icon {
+    display: none;
+}
+
 @media (max-width: 1040px) {
     .cart-page {
         margin-left: 20px;
@@ -495,9 +499,7 @@ td, th {
     }
 
     .main-menu-mobile{
-        display: flex;
-        flex-direction: column;
-        
+        display: none;
     }
 
     .mobile-category{
@@ -511,12 +513,24 @@ td, th {
         position: fixed;
         bottom: 0px;
         left: 0px;
-        padding-top: 60px;
-        padding-bottom: 60px;
+        padding-top: 30px;
+        padding-bottom: 20px;
         border-top: 1px solid cadetblue;
         background-color: white;
     }
-    .icon{
+
+    .navbar-nav {
+        display: inline-flex;
+    }
+
+    .nav-item {
+        margin: 10px;
+    }
+
+    button[type="submit"].role-link-button {
+        padding: 10px;
+        width: 100px;
+        margin-top: 0px;
     }
 
     .order-div {
