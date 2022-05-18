@@ -474,7 +474,7 @@ td, th {
     }
 
     .main-menu{
-        display: none;
+        display: block;
     }
 
     .main-menu-mobile{
@@ -487,8 +487,17 @@ td, th {
         display: flex;
         flex-wrap: wrap;
     }
-    .login-area{
-        display: none;
+    .login-area {
+        display: block;
+        text-align: center;
+        width: 100%;
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        padding-top: 60px;
+        padding-bottom: 60px;
+        border-top: 1px solid cadetblue;
+        background-color: white;
     }
     .icon{
         position: absolute;
