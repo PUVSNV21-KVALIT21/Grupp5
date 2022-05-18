@@ -453,9 +453,26 @@ td, th {
     display: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1040px) {
+    .cart-page {
+        margin-left: 20px;
+    }
+
+    .order-div {
+        margin: 20px;
+        display: block;
+    }
+
+    .total-sum-div {
+        padding: 0;
+    }
+}
+
+@media (max-width: 840px) {
 
     header {
+        display:flex;
+        flex-direction: column;
         flex-wrap: wrap;
     }
 
@@ -491,9 +508,11 @@ td, th {
         display: none;
     }
     .icon{
-        position: absolute;
     }
 
+    .order-div {
+        position: static;
+    }
 
     .menu-button{
         width: 70px;
@@ -508,11 +527,6 @@ td, th {
     .cart-page {
         margin-left: 0px;
         display:block;
-    }
-
-    .order-div{
-        left: 0px;
-        top:125px;
     }
 
     .row{
