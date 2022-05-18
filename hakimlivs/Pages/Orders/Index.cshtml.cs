@@ -37,11 +37,11 @@ namespace hakimlivs.Pages.Orders
             {
                 if (id != null)
                 {
-                    Order = await database.Orders.Where(o => o.UserId == id).OrderBy(o => o.Date).Include(o => o.User).ToListAsync();
+                    Order = await database.Orders.Where(o => o.UserId == id).OrderByDescending(o => o.Date).Include(o => o.User).ToListAsync();
                 }
                 else
                 {
-                    Order = await database.Orders.OrderBy(o => o.Date).Include(o => o.User).ToListAsync();
+                    Order = await database.Orders.OrderByDescending(o => o.Date).Include(o => o.User).ToListAsync();
                 }
             }
             else

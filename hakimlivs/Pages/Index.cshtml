@@ -61,7 +61,7 @@
     }
     else
     {
-        
+
         <section class="main-menu">
             <div id="Hamburger">
                 <h3>Kategorier</h3>
@@ -70,16 +70,18 @@
                     <div class="menu-button">
                         <form method="get">
                             <button type="submit" name="Filter" id="Filter"
-                                value="@category.Name">@category.Name</button>
+                            value="@category.Name">
+                                @category.Name
+                            </button>
                         </form>
                     </div>
 
                 }
-                      
+
             </div>
-             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                       <i class="fa-solid fa-bars"></i>
-                       </a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa-solid fa-bars"></i>
+            </a>
             <div class="login-area">
                 <div class="login-card">
                     <partial name="_LoginPartial" />
@@ -92,58 +94,58 @@
 <div class="product-div">
     @if (User.IsInRole("Basic"))
     {
-        @foreach (var item in Model.Product)
-        {
-            <div class="product-item">
-                <div class="product-img">
-                    <img src=@item.Image>
-                </div>
-                <div class="product-item-main">
-                    <p class="product-name">
-                        @item.Name
-                    </p>
-                    <p class="product-description">
-                        @item.Info
-                    </p>
-                </div>
-                <div class="product-item-footer">
-                    <p class="product-price">
-                        @item.Price kr
-                    </p>
-                    <div class="add-to-cart">
-                        <form method="post" asp-page-handler="add">
-                            <button type="submit" name="Id" id="Id" value="@item.Id" onclick="addProduct()">
-                                Lägg till
-                            </button>
-                        </form>
-                    </div>
-                </div>
+    @foreach (var item in Model.Product)
+    {
+    <div class="product-item">
+        <div class="product-img">
+            <img src=@item.Image>
+        </div>
+        <div class="product-item-main">
+            <p class="product-name">
+                @item.Name
+            </p>
+            <p class="product-description">
+                @item.Info
+            </p>
+        </div>
+        <div class="product-item-footer">
+            <p class="product-price">
+                @item.Price kr
+            </p>
+            <div class="add-to-cart">
+                <form method="post" asp-page-handler="add">
+                    <button type="submit" name="Id" id="Id" value="@item.Id" onclick="addProduct()">
+                        Lägg till
+                    </button>
+                </form>
             </div>
-        }
+        </div>
+    </div>
+    }
     }
     else
     {
-        @foreach (var item in Model.Product)
-        {
-            <div class="product-item">
-                <div class="product-img">
-                    <img src=@item.Image>
-                </div>
-                <div class="product-item-main">
-                    <p class="product-name">
-                        @item.Name
-                    </p>
-                    <p class="product-description">
-                        @item.Info
-                    </p>
-                </div>
-                <div class="product-item-footer">
-                    <p class="product-price"  style="width: 100%;">
-                        @item.Price kr
-                    </p>
-                </div>
-            </div>
-        }
+    @foreach (var item in Model.Product)
+    {
+    <div class="product-item">
+        <div class="product-img">
+            <img src=@item.Image>
+        </div>
+        <div class="product-item-main">
+            <p class="product-name">
+                @item.Name
+            </p>
+            <p class="product-description">
+                @item.Info
+            </p>
+        </div>
+        <div class="product-item-footer">
+            <p class="product-price" style="width: 100%;">
+                @item.Price kr
+            </p>
+        </div>
+    </div>
+    }
     }
 
 </div>

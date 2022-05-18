@@ -24,29 +24,7 @@
             </button>
         }
 
-        <div class="main-menu-mobile">
-            <h3>Kategorier</h3>
-            <div id="Hamburger">
-
-                <div class="mobile-category">
-                    @foreach (var category in database.Categories)
-                    {
-                        <div class="menu-button">
-                            <form method="get">
-                                <button type="submit" name="Filter" id="Filter"
-                                    value="@category.Name">
-                                    @category.Name
-                                </button>
-                            </form>
-                        </div>
-
-                    }
-                </div>
-            </div>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                <i class="fa-solid fa-bars"></i>
-            </a>
-        </div>
+        
         @*
             <div class="login-area-mobile">
             <div class="login-card">
