@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\Images\apelsin.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="ceTe.DynamicPDF.Converter.NET" Version="3.14.0" />
     <PackageReference Include="ceTe.DynamicPDF.CoreSuite.NET" Version="11.30.0" />
     <PackageReference Include="ceTe.DynamicPDF.HtmlConverter.NET" Version="1.7.0" />
@@ -27,6 +31,7 @@
 
   <ItemGroup>
     <None Include="wwwroot\Images\Allrengöring.jfif" />
+    <None Include="wwwroot\Images\apelsin.jpg" />
     <None Include="wwwroot\Images\Ballerina.jfif" />
     <None Include="wwwroot\Images\Brödpinnar.jfif" />
     <None Include="wwwroot\Images\Deo.jfif" />
