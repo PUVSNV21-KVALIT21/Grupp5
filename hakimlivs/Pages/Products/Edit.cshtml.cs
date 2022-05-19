@@ -37,6 +37,7 @@ namespace hakimlivs.Pages.Products
         private async Task LoadProduct(int id)
         {
             Product = await database.Products.SingleAsync(p => p.Id == id);
+
         }
         public async Task OnGetAsync(int id)
         {
@@ -53,6 +54,8 @@ namespace hakimlivs.Pages.Products
         }
         public async Task<IActionResult> OnPostAsync(int id, Product product)
         {
+            await LoadProduct(id);
+
             string wwwPath = _environment.WebRootPath;
             string contentPath = _environment.ContentRootPath;
 
@@ -62,22 +65,29 @@ namespace hakimlivs.Pages.Products
                 Directory.CreateDirectory(path);
             }
 
-            string fileName = Path.GetFileName(Image.FileName);
+            string fileName = "";
 
-            using (FileStream stream = new FileStream(Path.Combine(path, fileName), FileMode.Create))
+            if (Image == null)
             {
-                Image.CopyTo(stream);
+                fileName = Product.Image;
+                Product.Image = fileName;
             }
-
-            await LoadProduct(id);
-
+            else
+            {
+                fileName = Path.GetFileName(Image.FileName);
+                using (FileStream stream = new FileStream(Path.Combine(path, fileName), FileMode.Create))
+                {
+                    Image.CopyTo(stream);
+                }
+                Product.Image = "/Images/" + fileName;
+            }
+                  
             Category = await database.Categories.FindAsync(product.Category.ID);
 
             Product.Name = product.Name;
             Product.Price = product.Price;
             Product.Category = Category;
             Product.Info = product.Info;
-            Product.Image = "/Images/" + fileName;
 
             await database.SaveChangesAsync();
 
