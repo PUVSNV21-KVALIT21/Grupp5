@@ -36,7 +36,7 @@ namespace hakimlivs.Pages.Products
         {
             Category = await database.Categories.Where(c => c.Name == Filter).FirstOrDefaultAsync();
 
-            if (Filter == null)
+            if (Filter == null || Filter == "Alla Produkter")
             {
                 Product = await database.Products.ToListAsync();
             }

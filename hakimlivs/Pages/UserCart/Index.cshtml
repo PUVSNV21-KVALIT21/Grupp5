@@ -25,7 +25,7 @@
                         @if (details.Amount <= 1)
                         {
                             <form method="post" asp-page-handler="minus" asp-route-id="@details.Id">
-                                <button type="submit" class="cart-button-remove" style="opacity:0.6; cursor:context-menu;" disabled>-</button>
+                                <button type="submit" class="cart-button-remove" style="cursor:context-menu;" disabled>-</button>
                             </form>
                         }
                         else

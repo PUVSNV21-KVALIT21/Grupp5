@@ -151,6 +151,7 @@ button[type="submit"].role-link-button {
     padding: 10px;
     width: 100px;
     margin-top: 20px;
+    margin-right: 15px;
 }
 
 #delete:hover {
@@ -186,7 +187,11 @@ button[type="submit"].role-link-button {
     border-right: 1px solid #e8e8e8;
 }
 
-.main-menu {
+.main-menu-admin {
+    text-align: center;
+}
+
+.main-menu-customer {
     text-align: center;
 }
 
@@ -453,10 +458,35 @@ td, th {
     display: none;
 }
 
-@media (max-width: 600px) {
+.icon {
+    display: none;
+}
+
+@media (max-width: 1040px) {
+    .cart-page {
+        margin-left: 20px;
+    }
+
+    .order-div {
+        margin: 20px;
+        display: block;
+    }
+
+    .total-sum-div {
+        padding: 0;
+    }
+}
+
+@media (max-width: 840px) {
 
     header {
+        display:flex;
+        flex-direction: column;
         flex-wrap: wrap;
+    }
+
+    .hakim-title {
+        margin-bottom: 10px;
     }
 
     .login-area-mobile{
@@ -465,35 +495,72 @@ td, th {
 
     #Hamburger{   
         display: none;
-        flex-wrap:wrap;
-        position: relative;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .category-buttons {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
     }
 
     .product-div {
-        padding-top: 100px;
+        padding-top: 50px;
     }
 
-    .main-menu{
-        display: none;
+    .main-menu-customer{
+        display: flex;
+        flex-direction: column-reverse;
+        margin-top: 120px;
+    }
+
+    .main-menu-admin {
+        display: flex;
+        flex-direction: column;
+        margin-top: 60px;
     }
 
     .main-menu-mobile{
-        display: flex;
-        flex-direction: column;
-        
+        display: none;
     }
 
     .mobile-category{
         display: flex;
         flex-wrap: wrap;
     }
-    .login-area{
-        display: none;
-    }
-    .icon{
-        position: absolute;
+
+    .login-area {
+        display: block;
+        text-align: center;
+        width: 100%;
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        padding-top: 20px;
+        padding-bottom: 10px;
+        border-top: 1px solid cadetblue;
+        background-color: white;
     }
 
+    .navbar-nav {
+        display: inline-flex;
+    }
+
+    .nav-item {
+        margin: 10px;
+    }
+
+    button[type="submit"].role-link-button {
+        padding: 10px;
+        width: 100px;
+        margin-top: 15px;
+    }
+
+    .order-div {
+        position: static;
+    }
 
     .menu-button{
         width: 70px;
@@ -510,13 +577,34 @@ td, th {
         display:block;
     }
 
-    .order-div{
-        left: 0px;
-        top:125px;
-    }
-
     .row{
         margin-top: 100px;
         margin-left: 0px;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .go-to-cart {
+        margin-top: 15px;
+        width: 140px;
+        padding: 15px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .icon {
+        display: block;
+    }
+
+    .area-page {
+        margin-left: 100px;
+    }
+
+    .menu-button {
+        width: 100px;
     }
 }
