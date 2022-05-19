@@ -407,12 +407,11 @@ footer {
 }
 
 .order-div {
+    position: fixed;
+    right: 200px;
     margin: 20px;
     display: flex;
     flex-direction: row;
-    position: fixed;
-    top: 110px;
-    left: 710px;
 }
 
 .total-sum-div {
@@ -462,12 +461,18 @@ td, th {
     display: none;
 }
 
+.cart-options {
+    display: flex;
+}
+
 @media (max-width: 1040px) {
     .cart-page {
         margin-left: 20px;
     }
 
     .order-div {
+        position: fixed;
+        right: 200px;
         margin: 20px;
         display: block;
     }
@@ -606,5 +611,34 @@ td, th {
 
     .menu-button {
         width: 100px;
+    }
+}
+
+@media (max-width: 450px) {
+    .cart-button-remove {
+        margin-bottom: 10px;
+    }
+
+    .cart-button {
+        margin-bottom: 10px;
+    }
+
+    .cart-options {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .cart-manager {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cart-item {
+        flex-direction: column;
+    }
+
+    .cart-item-details {
+        margin-bottom: 15px;
+        display: flex;
     }
 }
