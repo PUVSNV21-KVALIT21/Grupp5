@@ -10,7 +10,7 @@
         <h4>Ändra produkt</h4>
         <hr />
         <div class="col-md-4">
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="Product.Id" />
                 <div class="form-group">
@@ -33,9 +33,7 @@
                     <span asp-validation-for="Product.Info" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Product.Image" class="control-label"></label>
-                    <input asp-for="Product.Image" class="form-control" />
-                    <span asp-validation-for="Product.Image" class="text-danger"></span>
+                    <input type="file" asp-for="Image" />
                 </div>
                 <div class="form-group">
                     <button type="submit" class="role-link-button">

@@ -20,5 +20,6 @@ namespace hakimlivs.Models
 
         [Required]
         public string Image { get; set; }
+
     }
 }

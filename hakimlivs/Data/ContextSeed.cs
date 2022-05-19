@@ -116,7 +116,7 @@ namespace hakimlivs.Data
             }
 
             string[] lines = File.ReadAllLines("Products.csv");
-            
+
             List<Category> categories = database.Categories.ToList();
 
             foreach (string line in lines)
@@ -127,7 +127,7 @@ namespace hakimlivs.Data
                 {
                     Name = values[0],
                     Price = decimal.Parse(values[1]),
-                    Category = categories[int.Parse(values[2])-1],
+                    Category = categories[int.Parse(values[2]) - 1],
                     Info = values[3],
                     Image = values[4],
                 };
