@@ -151,6 +151,7 @@ button[type="submit"].role-link-button {
     padding: 10px;
     width: 100px;
     margin-top: 20px;
+    margin-right: 15px;
 }
 
 #delete:hover {
@@ -186,7 +187,11 @@ button[type="submit"].role-link-button {
     border-right: 1px solid #e8e8e8;
 }
 
-.main-menu {
+.main-menu-admin {
+    text-align: center;
+}
+
+.main-menu-customer {
     text-align: center;
 }
 
@@ -480,22 +485,41 @@ td, th {
         flex-wrap: wrap;
     }
 
+    .hakim-title {
+        margin-bottom: 10px;
+    }
+
     .login-area-mobile{
         display:block;
     }
 
     #Hamburger{   
         display: none;
-        flex-wrap:wrap;
-        position: relative;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .category-buttons {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
     }
 
     .product-div {
-        padding-top: 100px;
+        padding-top: 50px;
     }
 
-    .main-menu{
-        display: block;
+    .main-menu-customer{
+        display: flex;
+        flex-direction: column-reverse;
+        margin-top: 120px;
+    }
+
+    .main-menu-admin {
+        display: flex;
+        flex-direction: column;
+        margin-top: 60px;
     }
 
     .main-menu-mobile{
@@ -506,6 +530,7 @@ td, th {
         display: flex;
         flex-wrap: wrap;
     }
+
     .login-area {
         display: block;
         text-align: center;
@@ -513,8 +538,8 @@ td, th {
         position: fixed;
         bottom: 0px;
         left: 0px;
-        padding-top: 30px;
-        padding-bottom: 20px;
+        padding-top: 20px;
+        padding-bottom: 10px;
         border-top: 1px solid cadetblue;
         background-color: white;
     }
@@ -530,7 +555,7 @@ td, th {
     button[type="submit"].role-link-button {
         padding: 10px;
         width: 100px;
-        margin-top: 0px;
+        margin-top: 15px;
     }
 
     .order-div {
@@ -555,5 +580,31 @@ td, th {
     .row{
         margin-top: 100px;
         margin-left: 0px;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .go-to-cart {
+        margin-top: 15px;
+        width: 140px;
+        padding: 15px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .icon {
+        display: block;
+    }
+
+    .area-page {
+        margin-left: 100px;
+    }
+
+    .menu-button {
+        width: 100px;
     }
 }
