@@ -1,0 +1,22 @@
+﻿@page
+@model hakimlivs.Pages.Orders.IndexModel
+@{
+}
+
+<div class="area-page">
+        <h3 style="margin-left: 20px;">Orderz</h3>
+        @foreach (var order in Model.Order)
+        {
+            <div class="row">
+                @if(User.IsInRole("Admin"))
+                {
+                    <p>Kund: @order.User.Email</p>
+                }
+                <p>Order id: @order.Id</p>
+                <p>Datum: @order.Date</p>
+                <button type="submit" class="role-link-button">
+                    <a asp-page="./Details" asp-route-id="@order.Id">Se orderinfo</a>
+                </button>
+            </div>
+        }
+</div>

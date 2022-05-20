@@ -129,6 +129,7 @@ namespace hakimlivs.Areas.Identity.Pages.Account
                 };
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
+                await _userManager.AddToRoleAsync(user, Roles.Basic.ToString());
 
                 if (result.Succeeded)
                 {

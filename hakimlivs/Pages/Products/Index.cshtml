@@ -1,0 +1,84 @@
+﻿@page
+@model hakimlivs.Pages.Products.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="main-menu-div">
+    @if (User.IsInRole("Admin"))
+    {
+        <section class="main-menu">
+            <h3>Adminpanel</h3>
+            <a asp-area="" asp-page="/Products/Create">
+                <div class="menu-button">
+                    <button type="submit" id="Filter">
+                        Lägg till produkter
+                    </button>
+                </div>
+            </a>
+            <a asp-area="" asp-page="/Products/Index">
+                <div class="menu-button">
+                    <button type="submit" id="Filter">
+                        Ändra produkter
+                    </button>
+                </div>
+            </a>
+            <a asp-area="" asp-page="/Orders/Index">
+                <div class="menu-button">
+                    <button type="submit" id="Filter">
+                        Ordrar
+                    </button>
+                </div>
+            </a>
+            <a asp-area="" asp-page="/Invoices/Index">
+                <div class="menu-button">
+                    <button type="submit" id="Filter">
+                        Fakturor
+                    </button>
+                </div>
+            </a>
+            <a asp-area="" asp-page="/Admin/RoleManager/Index">
+                <div class="menu-button">
+                    <button type="submit" id="Filter">
+                        Lägg till roller
+                    </button>
+                </div>
+            </a>
+            <a asp-area="" asp-page="/Admin/UserRoles/Index">
+                <div class="menu-button">
+                    <button type="submit" id="Filter">
+                        Rollhantering
+                    </button>
+                </div>
+            </a>
+        </section>
+    }
+</div>
+
+<div class="product-div">
+    @foreach (var item in Model.Product)
+    {
+        <div class="product-item">
+            <div class="product-img">
+                <img src=@item.Image>
+            </div>
+            <div class="product-item-main">
+                <p class="product-name">
+                    @item.Name
+                </p>
+                <p class="product-description">
+                    @item.Info
+                </p>
+            </div>
+            <div class="product-item-footer">
+                <div class="edit-button">
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Ändra</a>
+                </div>
+                <div class="delete-button">
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Ta bort</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,50 @@
+﻿@page "{id:int}"
+@model hakimlivs.Pages.Invoices.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="area-page">
+    <div class="faktura">
+        <h3>Faktura</h3>
+        <div class="faktura-kund-info">
+            <p>Förnamn: @Model.User.FirstName</p>
+            <p>Efternamn: @Model.User.LastName </p>
+            <p>Email: @Model.User.Email</p>
+            <p>Adress: @Model.User.Street @Model.User.StreetNumber</p> 
+            <p>@Model.User.City @Model.User.PostalCode</p>
+        </div>
+
+            
+        <div class="faktura-kund-items">
+            <h4>Order Nr: @Model.Order.Id</h4>
+            @foreach(var item in @Model.Order.OrderDetails)
+            {
+                <p>Artikel: @item.Product.Name  x @item.Amount (Pris per st: @item.Product.Price)</p>
+                decimal price = @item.Product.Price;
+                decimal sum = @item.Amount * price;
+                @Model.TotalSum += sum;
+                <p>Summa: @sum kr</p>
+            }
+            <p>Total: @Model.TotalSum kr</p>
+        </div>
+
+        <div class="faktura-footer">
+            <h4>OCR:</h4> <p>@Model.User.Id</p>
+            <h4>Fakturadatum:</h4> <p>@Model.Invoice.PrintDate.ToString("yyyy/MM/dd")</p>
+            <h4>Förfallodatum:</h4> <p>@Model.Invoice.PrintDate.AddDays(30).ToString("yyyy/MM/dd")</p>
+            <button type="submit" class="role-link-button">
+                <a asp-page="./Delete" asp-route-id="@Model.Invoice.Id">
+                    Ta bort
+                </a>
+            </button>
+            <form method="post" asp-route-id=@Model.Invoice.Id>
+                <button class="role-link-button" type="submit" name="print">Spara PDF</button>
+            </form>
+            <div>
+                <a class="role-link" asp-page="./Index">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>
+

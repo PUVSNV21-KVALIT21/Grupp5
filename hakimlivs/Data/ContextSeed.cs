@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using System.Collections.Generic;
 
 namespace hakimlivs.Data
 {
@@ -15,9 +16,7 @@ namespace hakimlivs.Data
         public static async Task SeedRolesAsync(RoleManager<IdentityRole> roleManager)
         {
             //Seed Roles
-            await roleManager.CreateAsync(new IdentityRole(Roles.SuperAdmin.ToString()));
             await roleManager.CreateAsync(new IdentityRole(Roles.Admin.ToString()));
-            await roleManager.CreateAsync(new IdentityRole(Roles.Moderator.ToString()));
             await roleManager.CreateAsync(new IdentityRole(Roles.Basic.ToString()));
         }
 
@@ -43,14 +42,12 @@ namespace hakimlivs.Data
                 if (user == null)
                 {
                     await userManager.CreateAsync(defaultUser, "123Pa$$word.");
-                    await userManager.AddToRoleAsync(defaultUser, Roles.Basic.ToString());
-                    await userManager.AddToRoleAsync(defaultUser, Roles.Moderator.ToString());
                     await userManager.AddToRoleAsync(defaultUser, Roles.Admin.ToString());
-                    await userManager.AddToRoleAsync(defaultUser, Roles.SuperAdmin.ToString());
                 }
 
             }
         }
+
         public static async Task InitializeUserAsync(ApplicationDbContext database, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
             if (database.Products.Any())
@@ -90,6 +87,53 @@ namespace hakimlivs.Data
                     await userManager.AddToRoleAsync(user, Roles.Basic.ToString());
                 }
             }
+        }
+        public static void InitializeCategories(ApplicationDbContext database)
+        {
+            if (database.Categories.Any())
+            {
+                return;
+            }
+
+            string[] categoryLines = File.ReadAllLines("Data/Categories.csv");
+
+            foreach (string line in categoryLines)
+            {
+                Category category = new Category
+                {
+                    Name = line,
+                };
+                database.Categories.Add(category);
+            }
+            database.SaveChanges();
+        } 
+
+        public static void InitializeProducts(ApplicationDbContext database)
+        {
+            if (database.Products.Any())
+            {
+                return;
+            }
+
+            string[] lines = File.ReadAllLines("Products.csv");
+
+            List<Category> categories = database.Categories.ToList();
+
+            foreach (string line in lines)
+            {
+                string[] values = line.Split(";");
+
+                Product product = new Product
+                {
+                    Name = values[0],
+                    Price = decimal.Parse(values[1]),
+                    Category = categories[int.Parse(values[2]) - 1],
+                    Info = values[3],
+                    Image = values[4],
+                };
+                database.Products.Add(product);
+            }
+            database.SaveChanges();
         }
     }
 }

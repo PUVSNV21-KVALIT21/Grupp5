@@ -1,0 +1,25 @@
+﻿@page
+@model hakimlivs.Pages.Invoices.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="area-page">
+    <h3 style="margin-left: 20px;">Fakturor</h3>
+    @foreach (var item in Model.Invoice)
+    {
+        <div class="row">
+            @if (User.IsInRole("Admin"))
+            {
+                <p>Order: @item.OrderId</p>
+                <p>KundId: @item.UserId</p>
+                <p>Datum: @item.PrintDate.ToString("yyyy/MM/dd")</p>
+                <button type="submit" class="role-link-button">
+                    <a asp-page="./Details" asp-route-id="@item.Id">
+                        Detaljer
+                    </a>
+                </button>
+            }
+        </div>
+    }
+</div>

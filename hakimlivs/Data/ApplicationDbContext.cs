@@ -8,16 +8,21 @@ using System.Text;
 
 namespace hakimlivs.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<User>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
+        public DbSet<Invoice> Invoices { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
-        public DbSet<ManageUserRolesViewModel> ManageUserRolesViewModel { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
+        public DbSet<Category> Categories { get; set; }
+
+        /*        public DbSet<ManageUserRolesViewModel> ManageUserRolesViewModel { get; set; }*/
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -51,6 +56,12 @@ namespace hakimlivs.Data
             {
                 entity.ToTable("UserTokens");
             });
+            modelBuilder.Entity<Product>().ToTable("Product");
+            modelBuilder.Entity<Order>().ToTable("Order");
+            modelBuilder.Entity<OrderDetails>().ToTable("OrderDetails");
+            modelBuilder.Entity<Cart>().ToTable("Cart");
+            modelBuilder.Entity<CartItem>().ToTable("CartItem");
+            modelBuilder.Entity<Invoice>().ToTable("Invoice");
         }
     }
 }

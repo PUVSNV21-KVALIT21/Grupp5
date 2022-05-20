@@ -1,0 +1,53 @@
+﻿@page
+@model hakimlivs.Pages.Products.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="area-page">
+    <div class="row">
+        <h4>Lägg till ny produkt</h4>
+        <hr />
+        <div class="col-md-4">
+            <form method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Product.Name" class="control-label"></label>
+                    <input asp-for="Product.Name" class="form-control" />
+                    <span asp-validation-for="Product.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Product.Price" class="control-label"></label>
+                    <input asp-for="Product.Price" class="form-control" />
+                    <span asp-validation-for="Product.Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select asp-for="Product.Category.ID" asp-items="Model.Categories"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Product.Info" class="control-label"></label>
+                    <input asp-for="Product.Info" class="form-control" />
+                    <span asp-validation-for="Product.Info" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="file" asp-for="Image" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="role-link-button">Lägg till</button>
+                </div>
+            </form>
+            <div>
+                <a class="role-link" asp-page="Index">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}
